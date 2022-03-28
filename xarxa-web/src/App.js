@@ -1,23 +1,18 @@
 import React, { Component } from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Link,
-  BrowserRouter,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import AddTutorial from "./components/add-tutorial.component";
 import Tutorial from "./components/tutorial.component";
 import TutorialsList from "./components/tutorials-list.component";
+import AlumnosList from "./components/alumnos-list.component";
 class App extends Component {
   render() {
     return (
-      <BrowserRouter>
+      <Router>
         <nav className="navbar navbar-expand navbar-dark bg-dark">
-          <Link to={"/tutorials"} className="navbar-brand">
-            bezKoder
+          <Link to={"/alumnos"} className="navbar-brand">
+            Alumnos
           </Link>
           <div className="navbar-nav mr-auto">
             <li className="nav-item">
@@ -35,12 +30,13 @@ class App extends Component {
         <div className="container mt-3">
           <Routes>
             <Route exact path={"/"} element={<TutorialsList />} />
+            <Route exact path={"/alumnos"} element={<AlumnosList />} />
             <Route exact path={"/tutorials"} element={<TutorialsList />} />
             <Route exact path="/add" element={<AddTutorial />} />
             <Route path="/tutorials/:id" element={<Tutorial />} />
           </Routes>
         </div>
-      </BrowserRouter>
+      </Router>
     );
   }
 }
