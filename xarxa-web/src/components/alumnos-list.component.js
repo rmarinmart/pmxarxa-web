@@ -13,7 +13,16 @@ class AlumnosList extends Component {
 
   renderAlumnos(alumnos) {
     return alumnos.map((alumno) => {
-      return <p key={alumno.id}>{alumno.nombre + " " + alumno.apellidos}</p>;
+      return (
+        <a
+          href={`./alumnos/${alumno.id}`}
+          key={alumno.id}
+          class="list-group-item list-group-item-action"
+          aria-current="true"
+        >
+          {`${alumno.id} ${alumno.nombre} ${alumno.apellidos}`}
+        </a>
+      );
     });
   }
 
@@ -22,7 +31,7 @@ class AlumnosList extends Component {
     return (
       <div>
         <h1>Alumnos: {alumnos.length}</h1>
-        <div>{this.renderAlumnos(alumnos)}</div>
+        <div class="list-group">{this.renderAlumnos(alumnos)}</div>
       </div>
     );
   }
