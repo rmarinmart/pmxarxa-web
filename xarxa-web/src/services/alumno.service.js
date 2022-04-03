@@ -6,5 +6,8 @@ class AlumnoDataService {
   get(id) {
     return http.get(`/alumnos/${id}`);
   }
+  update(id, data) {
+    return http.put(`/alumnos/${id}`, data);
+  }
 }
 export default new AlumnoDataService();

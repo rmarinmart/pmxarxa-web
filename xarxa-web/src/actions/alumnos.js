@@ -1,4 +1,4 @@
-import { RETRIEVE_ALUMNOS } from "./types";
+import { RETRIEVE_ALUMNOS, UPDATE_ALUMNO } from "./types";
 import AlumnoDataService from "../services/alumno.service";
 
 export const retrieveAlumnos = () => async (dispatch) => {
@@ -10,5 +10,17 @@ export const retrieveAlumnos = () => async (dispatch) => {
     });
   } catch (err) {
     console.log(err);
+  }
+};
+export const updateAlumno = (id, data) => async (dispatch) => {
+  try {
+    const res = await AlumnoDataService.update(id, data);
+    dispatch({
+      type: UPDATE_ALUMNO,
+      payload: data,
+    });
+    return Promise.resolve(res.data);
+  } catch (err) {
+    return Promise.reject(err);
   }
 };

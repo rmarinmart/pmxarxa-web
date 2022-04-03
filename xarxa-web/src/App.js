@@ -5,13 +5,9 @@ import {
   Route,
   Link,
   useParams,
-  useSearchParams,
 } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import AddTutorial from "./components/add-tutorial.component";
-import Tutorial from "./components/tutorial.component";
-import TutorialsList from "./components/tutorials-list.component";
 import AlumnosList from "./components/alumnos-list.component";
 import Alumno from "./components/alumno.component";
 
