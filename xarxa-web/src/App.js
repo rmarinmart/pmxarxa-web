@@ -8,9 +8,10 @@ import {
 } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import AlumnosList from "./components/alumnos-list.component";
+import TodaXarxa from "./components/todaXarxa.component";
 import Alumno from "./components/alumno.component";
 import Buscador from "./components/buscador.component";
+import Creador from "./components/creador.component";
 
 function BuildAlumnoComponent() {
   let { id } = useParams();
@@ -40,10 +41,11 @@ class App extends Component {
         </nav>
         <div className="container mt-3">
           <Routes>
-            <Route exact path={"/"} element={<AlumnosList />} />
-            <Route exact path={"/alumnos"} element={<AlumnosList />} />
+            <Route exact path={"/"} element={<Buscador />} />
+            <Route exact path={"/alumnos"} element={<TodaXarxa />} />
             <Route path={"/alumnos/:id"} element={<BuildAlumnoComponent />} />
             <Route exact path={"/busqueda"} element={<Buscador />} />
+            <Route exact path={"/nuevo"} element={<Creador />} />
           </Routes>
         </div>
       </Router>

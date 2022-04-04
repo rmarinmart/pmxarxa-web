@@ -2,12 +2,23 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import AlumnoDataService from "../services/alumno.service";
 import { updateAlumno } from "../actions/alumnos";
+import TabsBar from "./tabsBar.component";
+import Curso from "./curso.component";
+
 const ESO1 = 0;
 const ESO2 = 1;
 const ESO3 = 2;
 const ESO4 = 3;
 const FPB1 = 4;
 const FPB2 = 5;
+const tabConfig = [
+  { tabName: "1º ESO", tabId: ESO1 },
+  { tabName: "2º ESO", tabId: ESO2 },
+  { tabName: "3º ESO", tabId: ESO3 },
+  { tabName: "4º ESO", tabId: ESO4 },
+  { tabName: "1º FPB", tabId: FPB1 },
+  { tabName: "2º FPB", tabId: FPB2 },
+];
 
 class Alumno extends Component {
   constructor(props) {
@@ -121,17 +132,17 @@ class Alumno extends Component {
       );
     };
 
-    return this.renderCourse(
-      alumno.esopres1,
-      alumno.esodev1,
-      alumno.esopresobs1,
-      alumno.esodevobs1,
-      onPresChanged,
-      onDevChanged,
-      onPresObsChanged,
-      onDevObsChanged,
-      onPresObsChanged,
-      onDevObsChanged
+    return (
+      <Curso
+        checkedPres={alumno.esopres1}
+        checkedDev={alumno.esodev1}
+        presObs={alumno.esopresobs1}
+        devObs={alumno.esodevobs1}
+        onPresChanged={onPresChanged}
+        onDevChanged={onDevChanged}
+        onPresObsChanged={onPresObsChanged}
+        onDevObsChanged={onDevObsChanged}
+      />
     );
   }
 
@@ -172,15 +183,17 @@ class Alumno extends Component {
       );
     };
 
-    return this.renderCourse(
-      alumno.esopres2,
-      alumno.esodev2,
-      alumno.esopresobs2,
-      alumno.esodevobs2,
-      onPresChanged,
-      onDevChanged,
-      onPresObsChanged,
-      onDevObsChanged
+    return (
+      <Curso
+        checkedPres={alumno.esopres2}
+        checkedDev={alumno.esodev2}
+        presObs={alumno.esopresobs2}
+        devObs={alumno.esodevobs2}
+        onPresChanged={onPresChanged}
+        onDevChanged={onDevChanged}
+        onPresObsChanged={onPresObsChanged}
+        onDevObsChanged={onDevObsChanged}
+      />
     );
   }
 
@@ -221,15 +234,17 @@ class Alumno extends Component {
       );
     };
 
-    return this.renderCourse(
-      alumno.esopres3,
-      alumno.esodev3,
-      alumno.esopresobs3,
-      alumno.esodevobs3,
-      onPresChanged,
-      onDevChanged,
-      onPresObsChanged,
-      onDevObsChanged
+    return (
+      <Curso
+        checkedPres={alumno.esopres3}
+        checkedDev={alumno.esodev3}
+        presObs={alumno.esopresobs3}
+        devObs={alumno.esodevobs3}
+        onPresChanged={onPresChanged}
+        onDevChanged={onDevChanged}
+        onPresObsChanged={onPresObsChanged}
+        onDevObsChanged={onDevObsChanged}
+      />
     );
   }
 
@@ -269,16 +284,17 @@ class Alumno extends Component {
         true
       );
     };
-
-    return this.renderCourse(
-      alumno.esopres4,
-      alumno.esodev4,
-      alumno.esopresobs4,
-      alumno.esodevobs4,
-      onPresChanged,
-      onDevChanged,
-      onPresObsChanged,
-      onDevObsChanged
+    return (
+      <Curso
+        checkedPres={alumno.esopres4}
+        checkedDev={alumno.esodev4}
+        presObs={alumno.esopresobs4}
+        devObs={alumno.esodevobs4}
+        onPresChanged={onPresChanged}
+        onDevChanged={onDevChanged}
+        onPresObsChanged={onPresObsChanged}
+        onDevObsChanged={onDevObsChanged}
+      />
     );
   }
 
@@ -319,15 +335,17 @@ class Alumno extends Component {
       );
     };
 
-    return this.renderCourse(
-      alumno.fpbpres1,
-      alumno.fpbdev1,
-      alumno.fpbpresobs1,
-      alumno.fpbdevobs1,
-      onPresChanged,
-      onDevChanged,
-      onPresObsChanged,
-      onDevObsChanged
+    return (
+      <Curso
+        checkedPres={alumno.fpbpres1}
+        checkedDev={alumno.fpbdev1}
+        presObs={alumno.fpbpresobs1}
+        devObs={alumno.fpbdevobs1}
+        onPresChanged={onPresChanged}
+        onDevChanged={onDevChanged}
+        onPresObsChanged={onPresObsChanged}
+        onDevObsChanged={onDevObsChanged}
+      />
     );
   }
 
@@ -368,83 +386,23 @@ class Alumno extends Component {
       );
     };
 
-    return this.renderCourse(
-      alumno.fpbpres2,
-      alumno.fpbdev2,
-      alumno.fpbpresobs2,
-      alumno.fpbdevobs2,
-      onPresChanged,
-      onDevChanged,
-      onPresObsChanged,
-      onDevObsChanged
+    return (
+      <Curso
+        checkedPres={alumno.fpbpres2}
+        checkedDev={alumno.fpbdev2}
+        presObs={alumno.fpbpresobs2}
+        devObs={alumno.fpbdevobs2}
+        onPresChanged={onPresChanged}
+        onDevChanged={onDevChanged}
+        onPresObsChanged={onPresObsChanged}
+        onDevObsChanged={onDevObsChanged}
+      />
     );
   }
 
-  renderCourse(
-    checkedPres,
-    checkedDev,
-    presObs,
-    devObs,
-    onPresChanged,
-    onDevChanged,
-    onPresObsChanged,
-    onDevObsChanged
-  ) {
-    return (
-      <div>
-        <div className="mb-3">
-          <input
-            className="form-check-input"
-            type="checkbox"
-            value=""
-            id="flexCheckDefault"
-            checked={checkedPres}
-            onChange={(element) => onPresChanged(element.target.checked)}
-          />
-          <label className="form-check-label" htmlFor="flexCheckDefault">
-            Préstamo realizado
-          </label>
-        </div>
-        <div className="mb-3">
-          <label htmlFor="exampleFormControlTextarea1" className="form-label">
-            Observaciones préstamo
-          </label>
-          <textarea
-            className="form-control"
-            id="exampleFormControlTextarea1"
-            rows="3"
-            onChange={(element) => onPresObsChanged(element.target.value)}
-            value={presObs}
-          ></textarea>
-        </div>
-        <div className="mb-3">
-          <input
-            className="form-check-input"
-            type="checkbox"
-            value=""
-            id="flexCheckDefault"
-            checked={checkedDev}
-            onChange={(element) => onDevChanged(element.target.checked)}
-          />
-          <label className="form-check-label" htmlFor="flexCheckDefault">
-            Devolución realizada
-          </label>
-        </div>
-        <div className="mb-3">
-          <label htmlFor="exampleFormControlTextarea1" className="form-label">
-            Observaciones devolución
-          </label>
-          <textarea
-            className="form-control"
-            id="exampleFormControlTextarea1"
-            rows="3"
-            onChange={(element) => onDevObsChanged(element.target.value)}
-            value={devObs}
-          ></textarea>
-        </div>
-      </div>
-    );
-  }
+  onSetTab = (selectedTab) => {
+    this.setState({ cursoIndex: selectedTab });
+  };
 
   render() {
     const { currentAlumno, cursoIndex } = this.state;
@@ -452,57 +410,12 @@ class Alumno extends Component {
     return (
       <div>
         <h1>{`${currentAlumno.id} - ${currentAlumno.nombre} ${currentAlumno.apellidos}`}</h1>
+        <TabsBar
+          tabsConfig={tabConfig}
+          onSetTab={this.onSetTab}
+          initialTab={cursoIndex}
+        />
 
-        <ul className="nav nav-tabs">
-          <li className="nav-item">
-            <button
-              className={`nav-link ${cursoIndex === 0 ? "active" : ""}`}
-              onClick={() => this.setState({ cursoIndex: ESO1 })}
-            >
-              1º ESO
-            </button>
-          </li>
-          <li className="nav-item">
-            <button
-              className={`nav-link ${cursoIndex === 1 ? "active" : ""}`}
-              onClick={() => this.setState({ cursoIndex: ESO2 })}
-            >
-              2º ESO
-            </button>
-          </li>
-          <li className="nav-item">
-            <button
-              className={`nav-link ${cursoIndex === 2 ? "active" : ""}`}
-              onClick={() => this.setState({ cursoIndex: ESO3 })}
-            >
-              3º ESO
-            </button>
-          </li>
-          <li className="nav-item">
-            <button
-              className={`nav-link ${cursoIndex === 3 ? "active" : ""}`}
-              onClick={() => this.setState({ cursoIndex: ESO4 })}
-            >
-              4º ESO
-            </button>
-          </li>
-          <li className="nav-item">
-            <button
-              className={`nav-link ${cursoIndex === 4 ? "active" : ""}`}
-              onClick={() => this.setState({ cursoIndex: FPB1 })}
-            >
-              1º FPB
-            </button>
-          </li>
-          <li className="nav-item">
-            <button
-              className={`nav-link ${cursoIndex === 5 ? "active" : ""}`}
-              onClick={() => this.setState({ cursoIndex: FPB2 })}
-            >
-              2º FPB
-            </button>
-          </li>
-        </ul>
         {this.render1ESO(currentAlumno, cursoIndex)}
         {this.render2ESO(currentAlumno, cursoIndex)}
         {this.render3ESO(currentAlumno, cursoIndex)}

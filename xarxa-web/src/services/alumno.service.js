@@ -12,5 +12,11 @@ class AlumnoDataService {
   search(searchTerm) {
     return http.get(`/alumnos?searchTerm=${searchTerm}`);
   }
+  create(data) {
+    return http.post("/alumnos", data);
+  }
+  delete(id) {
+    return http.delete(`/alumnos/${id}`);
+  }
 }
 export default new AlumnoDataService();

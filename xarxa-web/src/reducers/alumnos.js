@@ -1,4 +1,9 @@
-import { RETRIEVE_ALUMNOS, UPDATE_ALUMNO } from "../actions/types";
+import {
+  RETRIEVE_ALUMNOS,
+  UPDATE_ALUMNO,
+  CREATE_ALUMNO,
+  DELETE_ALUMNO,
+} from "../actions/types";
 const initialState = [];
 function alumnoReducer(alumnos = initialState, action) {
   const { type, payload } = action;
@@ -16,6 +21,10 @@ function alumnoReducer(alumnos = initialState, action) {
           return alumno;
         }
       });
+    case CREATE_ALUMNO:
+      return [...alumnos, payload];
+    case DELETE_ALUMNO:
+      return alumnos.filter(({ id }) => id !== payload.id);
     default:
       return alumnos;
   }
