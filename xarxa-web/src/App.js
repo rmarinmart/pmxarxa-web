@@ -10,6 +10,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import AlumnosList from "./components/alumnos-list.component";
 import Alumno from "./components/alumno.component";
+import Buscador from "./components/buscador.component";
 
 function BuildAlumnoComponent() {
   let { id } = useParams();
@@ -42,6 +43,7 @@ class App extends Component {
             <Route exact path={"/"} element={<AlumnosList />} />
             <Route exact path={"/alumnos"} element={<AlumnosList />} />
             <Route path={"/alumnos/:id"} element={<BuildAlumnoComponent />} />
+            <Route exact path={"/busqueda"} element={<Buscador />} />
           </Routes>
         </div>
       </Router>

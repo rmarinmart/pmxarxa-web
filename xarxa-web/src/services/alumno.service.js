@@ -9,5 +9,8 @@ class AlumnoDataService {
   update(id, data) {
     return http.put(`/alumnos/${id}`, data);
   }
+  search(searchTerm) {
+    return http.get(`/alumnos?query=${searchTerm}`);
+  }
 }
 export default new AlumnoDataService();

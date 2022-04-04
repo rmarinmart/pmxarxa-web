@@ -12,6 +12,7 @@ export const retrieveAlumnos = () => async (dispatch) => {
     console.log(err);
   }
 };
+
 export const updateAlumno = (id, data) => async (dispatch) => {
   try {
     const res = await AlumnoDataService.update(id, data);
