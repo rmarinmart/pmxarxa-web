@@ -4,6 +4,7 @@ import AlumnoDataService from "../services/alumno.service";
 import { updateAlumno } from "../actions/alumnos";
 import TabsBar from "./tabsBar.component";
 import Curso from "./curso.component";
+import Emoji from "./emoji.component";
 
 const ESO1 = 0;
 const ESO2 = 1;
@@ -33,6 +34,7 @@ class Alumno extends Component {
         apellidos: "",
       },
       cursoIndex: ESO1,
+      activeSpinner: false,
       message: "",
     };
     this.currentTimerId = null;
@@ -70,15 +72,14 @@ class Alumno extends Component {
   }
 
   updateAlumno(alumno) {
+    this.setState({activeSpinner: true});
     this.props
       .updateAlumno(alumno.id, alumno)
       .then((reponse) => {
-        console.log(reponse);
-
-        this.setState({ message: "The pupil was updated successfully!" });
+        this.setState({ message: "The pupil was updated successfully!", activeSpinner: false });
       })
       .catch((e) => {
-        console.log(e);
+        this.setState({ message: `The pupil could not be updated!: ${e}`, activeSpinner: false });
       });
   }
 
@@ -405,11 +406,18 @@ class Alumno extends Component {
   };
 
   render() {
-    const { currentAlumno, cursoIndex } = this.state;
+    const { currentAlumno, cursoIndex, activeSpinner } = this.state;
 
     return (
       <div>
-        <h1>{`${currentAlumno.id} - ${currentAlumno.nombre} ${currentAlumno.apellidos}`}</h1>
+        <h1>{`${currentAlumno.id} - ${currentAlumno.nombre} ${currentAlumno.apellidos}`}
+          {activeSpinner?
+          <div class="spinner-border text-warning" role="status">         
+            <span class="visually-hidden">Loading...</span>
+          </div>:
+          <Emoji symbol="🟢"/>}
+        </h1> 
+        
         <TabsBar
           tabsConfig={tabConfig}
           onSetTab={this.onSetTab}
