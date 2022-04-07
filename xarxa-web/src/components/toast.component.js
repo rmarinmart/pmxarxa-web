@@ -13,7 +13,27 @@ class Toast extends React.Component {
         aria-atomic="true"
         className="d-flex justify-content-center align-items-center w-100"
       >
-        <div
+        <div className="toast align-items-center text-white bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true" ref={this.toastRef}>
+          <div className="d-flex">
+            <div className="toast-body">
+              {this.props.message}
+            </div>
+            <button type="button" className="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+        </div>
+      </div>
+
+
+    );
+  }
+}
+
+export default Toast;
+
+
+/*
+
+<div
           className="toast"
           role="alert"
           aria-live="assertive"
@@ -45,8 +65,4 @@ class Toast extends React.Component {
           <div className="toast-body">{this.props.message}</div>
         </div>
       </div>
-    );
-  }
-}
-
-export default Toast;
+ */

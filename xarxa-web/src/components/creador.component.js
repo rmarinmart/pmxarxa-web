@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { createAlumno } from "../actions/alumnos";
+import Toast from "./toast.component";
+import { Toast as BootstrapToast } from "../../node_modules/bootstrap/dist/js/bootstrap.esm";
 
 class Creador extends Component {
   constructor(props) {
@@ -14,8 +16,11 @@ class Creador extends Component {
       nombre: "",
       apellidos: "",
       submitted: false,
+      message: "",
     };
+    this.creationToast = React.createRef();
   }
+
   onChangeNombre(e) {
     this.setState({
       nombre: e.target.value,
@@ -41,7 +46,8 @@ class Creador extends Component {
         console.log(data);
       })
       .catch((e) => {
-        console.log(e);
+        this.setState({message: "Error creando usuario: " + e.message})
+        new BootstrapToast(this.creationToast.current.toastRef.current).show();
       });
   }
 
@@ -108,6 +114,10 @@ class Creador extends Component {
             </button>
           </form>
         )}
+        <Toast
+          ref={this.creationToast}
+          message={this.state.message}
+        />     
       </div>
     );
   }

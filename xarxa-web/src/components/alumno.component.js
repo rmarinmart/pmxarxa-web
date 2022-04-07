@@ -37,7 +37,6 @@ class Alumno extends Component {
       },
       cursoIndex: ESO1,
       activeSpinner: false,
-      toast: { title: "", message: "" },
       message: "",
     };
     this.currentTimerId = null;
@@ -89,15 +88,8 @@ class Alumno extends Component {
       .catch((e) => {
         const today = new Date();
         this.setState({
-          message: `The pupil could not be updated!: ${e}`,
+          message: "No se han podido guardar los datos en el servidor. " + e.message,
           activeSpinner: false,
-          toast: {
-            title: "Xarxa",
-            message:
-              "No se han podido guardar los datos en el servidor. " + e.message,
-            when: `${today.getHours()}:${today.getMinutes()}`,
-            color: "red",
-          },
         });
         new BootstrapToast(this.alumnoToast.current.toastRef.current).show();
       });
@@ -426,7 +418,7 @@ class Alumno extends Component {
   };
 
   render() {
-    const { currentAlumno, cursoIndex, activeSpinner, toast } = this.state;
+    const { currentAlumno, cursoIndex, activeSpinner, message } = this.state;
 
     return (
       <div>
@@ -455,10 +447,7 @@ class Alumno extends Component {
         {this.render2FPB(currentAlumno, cursoIndex)}
         <Toast
           ref={this.alumnoToast}
-          title={toast.title}
-          when={toast.when}
-          message={toast.message}
-          color={toast.color}
+          message={message}
         />
       </div>
     );
