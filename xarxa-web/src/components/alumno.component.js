@@ -5,6 +5,8 @@ import { updateAlumno } from "../actions/alumnos";
 import TabsBar from "./tabsBar.component";
 import Curso from "./curso.component";
 import Emoji from "./emoji.component";
+import Toast from "./toast.component";
+import { Toast as BootstrapToast } from "../../node_modules/bootstrap/dist/js/bootstrap.esm";
 
 const ESO1 = 0;
 const ESO2 = 1;
@@ -35,10 +37,13 @@ class Alumno extends Component {
       },
       cursoIndex: ESO1,
       activeSpinner: false,
+      toast: { title: "", message: "" },
       message: "",
     };
     this.currentTimerId = null;
+    this.alumnoToast = React.createRef();
   }
+
   componentDidMount() {
     this.getAlumno(this.props.id);
   }
@@ -72,14 +77,29 @@ class Alumno extends Component {
   }
 
   updateAlumno(alumno) {
-    this.setState({activeSpinner: true});
+    this.setState({ activeSpinner: true });
     this.props
       .updateAlumno(alumno.id, alumno)
       .then((reponse) => {
-        this.setState({ message: "The pupil was updated successfully!", activeSpinner: false });
+        this.setState({
+          message: "The pupil was updated successfully!",
+          activeSpinner: false,
+        });
       })
       .catch((e) => {
-        this.setState({ message: `The pupil could not be updated!: ${e}`, activeSpinner: false });
+        const today = new Date();
+        this.setState({
+          message: `The pupil could not be updated!: ${e}`,
+          activeSpinner: false,
+          toast: {
+            title: "Xarxa",
+            message:
+              "No se han podido guardar los datos en el servidor. " + e.message,
+            when: `${today.getHours()}:${today.getMinutes()}`,
+            color: "red",
+          },
+        });
+        new BootstrapToast(this.alumnoToast.current.toastRef.current).show();
       });
   }
 
@@ -406,18 +426,21 @@ class Alumno extends Component {
   };
 
   render() {
-    const { currentAlumno, cursoIndex, activeSpinner } = this.state;
+    const { currentAlumno, cursoIndex, activeSpinner, toast } = this.state;
 
     return (
       <div>
-        <h1>{`${currentAlumno.id} - ${currentAlumno.nombre} ${currentAlumno.apellidos}`}
-          {activeSpinner?
-          <div class="spinner-border text-warning" role="status">         
-            <span class="visually-hidden">Loading...</span>
-          </div>:
-          <Emoji symbol="🟢"/>}
-        </h1> 
-        
+        <h1>
+          {`${currentAlumno.id} - ${currentAlumno.nombre} ${currentAlumno.apellidos}`}
+          {activeSpinner ? (
+            <div className="spinner-border text-warning" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+          ) : (
+            <Emoji symbol="🟢" />
+          )}
+        </h1>
+
         <TabsBar
           tabsConfig={tabConfig}
           onSetTab={this.onSetTab}
@@ -430,6 +453,13 @@ class Alumno extends Component {
         {this.render4ESO(currentAlumno, cursoIndex)}
         {this.render1FPB(currentAlumno, cursoIndex)}
         {this.render2FPB(currentAlumno, cursoIndex)}
+        <Toast
+          ref={this.alumnoToast}
+          title={toast.title}
+          when={toast.when}
+          message={toast.message}
+          color={toast.color}
+        />
       </div>
     );
   }
