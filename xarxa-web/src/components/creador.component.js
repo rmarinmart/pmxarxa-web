@@ -67,7 +67,7 @@ class Creador extends Component {
             <div className="mb-3">
               <h3>El alumno se ha creado satisfactoriamente.</h3>
               <a
-                href={`./alumnos/${this.state.id}`}
+                href={`./#/alumnos/${this.state.id}`}
                 key={this.state.id}
                 className="list-group-item list-group-item-action"
                 aria-current="true"

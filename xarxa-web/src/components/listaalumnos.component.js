@@ -5,7 +5,7 @@ class ListaAlumnos extends Component {
     return alumnos.map((alumno) => {
       return (
         <a
-          href={`./alumnos/${alumno.id}`}
+          href={`./#/alumnos/${alumno.id}`}
           key={alumno.id}
           className="list-group-item list-group-item-action"
           aria-current="true"
