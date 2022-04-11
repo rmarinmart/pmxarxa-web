@@ -63,7 +63,7 @@ class Creador extends Component {
     return (
       <div>
         {this.state.submitted ? (
-          <form onSubit={this.newAlumno}>
+          <form onSubmit={this.newAlumno}>
             <div className="mb-3">
               <h3>El alumno se ha creado satisfactoriamente.</h3>
               <a

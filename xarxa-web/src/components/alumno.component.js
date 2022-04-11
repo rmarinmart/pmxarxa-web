@@ -4,9 +4,9 @@ import AlumnoDataService from "../services/alumno.service";
 import { updateAlumno } from "../actions/alumnos";
 import TabsBar from "./tabsBar.component";
 import Curso from "./curso.component";
-import Emoji from "./emoji.component";
 import Toast from "./toast.component";
 import { Toast as BootstrapToast } from "../../node_modules/bootstrap/dist/js/bootstrap.esm";
+import CabeceraAlumno from "./cabeceraAlumno.component";
 
 const ESO1 = 0;
 const ESO2 = 1;
@@ -37,6 +37,7 @@ class Alumno extends Component {
       },
       cursoIndex: ESO1,
       activeSpinner: false,
+      editName: false,
       message: "",
     };
     this.currentTimerId = null;
@@ -86,9 +87,9 @@ class Alumno extends Component {
         });
       })
       .catch((e) => {
-        const today = new Date();
         this.setState({
-          message: "No se han podido guardar los datos en el servidor. " + e.message,
+          message:
+            "No se han podido guardar los datos en el servidor. " + e.message,
           activeSpinner: false,
         });
         new BootstrapToast(this.alumnoToast.current.toastRef.current).show();
@@ -417,22 +418,46 @@ class Alumno extends Component {
     this.setState({ cursoIndex: selectedTab });
   };
 
+  onSaveName = (e) => {
+    e.preventDefault();
+    this.updateAlumno(this.state.currentAlumno);
+    this.setState({ editName: false });
+  };
+
+  onEditName = (e) => {
+    this.setState({
+      currentAlumno: { ...this.state.currentAlumno, nombre: e.target.value },
+    });
+  };
+
+  onEditSurname = (e) => {
+    this.setState({
+      currentAlumno: {
+        ...this.state.currentAlumno,
+        apellidos: e.target.value,
+      },
+    });
+  };
+
+  onStartEdit = () => {
+    this.setState({ editName: true });
+  };
+
   render() {
-    const { currentAlumno, cursoIndex, activeSpinner, message } = this.state;
+    const { currentAlumno, cursoIndex, activeSpinner, message, editName } =
+      this.state;
 
     return (
       <div>
-        <h1>
-          {`${currentAlumno.id} - ${currentAlumno.nombre} ${currentAlumno.apellidos}`}
-          {activeSpinner ? (
-            <div className="spinner-border text-warning" role="status">
-              <span className="visually-hidden">Loading...</span>
-            </div>
-          ) : (
-            <Emoji symbol="🟢" />
-          )}
-        </h1>
-
+        <CabeceraAlumno
+          editName={editName}
+          currentAlumno={currentAlumno}
+          activeSpinner={activeSpinner}
+          onSaveName={this.onSaveName}
+          onEditName={this.onEditName}
+          onEditSurname={this.onEditSurname}
+          onStartEdit={this.onStartEdit}
+        />
         <TabsBar
           tabsConfig={tabConfig}
           onSetTab={this.onSetTab}
@@ -445,10 +470,7 @@ class Alumno extends Component {
         {this.render4ESO(currentAlumno, cursoIndex)}
         {this.render1FPB(currentAlumno, cursoIndex)}
         {this.render2FPB(currentAlumno, cursoIndex)}
-        <Toast
-          ref={this.alumnoToast}
-          message={message}
-        />
+        <Toast ref={this.alumnoToast} message={message} />
       </div>
     );
   }
