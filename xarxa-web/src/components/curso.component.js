@@ -1,6 +1,25 @@
 import React from "react";
 
 class Curso extends React.Component {
+  constructor(props) {
+    super(props);
+    this.presTextArea = React.createRef();
+    this.devTextArea = React.createRef();
+  }
+
+  ajustarAlturaTextAreas() {
+    this.presTextArea.current.style.height = `${this.presTextArea.current.scrollHeight}px`;
+    this.devTextArea.current.style.height = `${this.devTextArea.current.scrollHeight}px`;
+  }
+
+  componentDidMount() {
+    this.ajustarAlturaTextAreas();
+  }
+
+  componentDidUpdate() {
+    this.ajustarAlturaTextAreas();
+  }
+
   render() {
     const {
       checkedPres,
@@ -37,6 +56,7 @@ class Curso extends React.Component {
             rows="3"
             onChange={(element) => onPresObsChanged(element.target.value)}
             value={presObs}
+            ref={this.presTextArea}
           ></textarea>
         </div>
         <div className="mb-3">
@@ -62,6 +82,7 @@ class Curso extends React.Component {
             rows="3"
             onChange={(element) => onDevObsChanged(element.target.value)}
             value={devObs}
+            ref={this.devTextArea}
           ></textarea>
         </div>
       </div>
