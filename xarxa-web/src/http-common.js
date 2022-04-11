@@ -1,8 +1,7 @@
 import axios from "axios";
 
-const PORT = process.env.PORT ||  8080;
 export default axios.create({
-  baseURL: `http://${window.location.hostname}:${PORT}/api`,
+  baseURL: `http://${window.location.hostname}:8080/api`,
   headers: {
     "Content-type": "application/json",
   },
