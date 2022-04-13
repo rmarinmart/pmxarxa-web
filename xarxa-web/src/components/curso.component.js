@@ -1,5 +1,7 @@
 import React from "react";
 
+const MIN_TEXTAREA_HEIGHT = 96;
+
 class Curso extends React.Component {
   constructor(props) {
     super(props);
@@ -8,8 +10,14 @@ class Curso extends React.Component {
   }
 
   ajustarAlturaTextAreas() {
-    this.presTextArea.current.style.height = `${this.presTextArea.current.scrollHeight}px`;
-    this.devTextArea.current.style.height = `${this.devTextArea.current.scrollHeight}px`;
+    if(this.presTextArea.current.scrollHeight > MIN_TEXTAREA_HEIGHT)
+      this.presTextArea.current.style.height = `${this.presTextArea.current.scrollHeight}px`;
+    else
+      this.presTextArea.current.style.height = MIN_TEXTAREA_HEIGHT;
+    if(this.devTextArea.current.scrollHeight > MIN_TEXTAREA_HEIGHT)      
+      this.devTextArea.current.style.height = `${this.devTextArea.current.scrollHeight}px`;
+    else
+      this.devTextArea.current.style.height =MIN_TEXTAREA_HEIGHT;
   }
 
   componentDidMount() {
