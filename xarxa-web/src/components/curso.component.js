@@ -1,4 +1,5 @@
 import React from "react";
+import IncidenciaModalComponent from "./incidenciaModal.component";
 
 const MIN_TEXTAREA_HEIGHT = 96;
 
@@ -10,14 +11,12 @@ class Curso extends React.Component {
   }
 
   ajustarAlturaTextAreas() {
-    if(this.presTextArea.current.scrollHeight > MIN_TEXTAREA_HEIGHT)
+    if (this.presTextArea.current.scrollHeight > MIN_TEXTAREA_HEIGHT)
       this.presTextArea.current.style.height = `${this.presTextArea.current.scrollHeight}px`;
-    else
-      this.presTextArea.current.style.height = MIN_TEXTAREA_HEIGHT;
-    if(this.devTextArea.current.scrollHeight > MIN_TEXTAREA_HEIGHT)      
+    else this.presTextArea.current.style.height = MIN_TEXTAREA_HEIGHT;
+    if (this.devTextArea.current.scrollHeight > MIN_TEXTAREA_HEIGHT)
       this.devTextArea.current.style.height = `${this.devTextArea.current.scrollHeight}px`;
-    else
-      this.devTextArea.current.style.height =MIN_TEXTAREA_HEIGHT;
+    else this.devTextArea.current.style.height = MIN_TEXTAREA_HEIGHT;
   }
 
   componentDidMount() {
@@ -30,6 +29,7 @@ class Curso extends React.Component {
 
   render() {
     const {
+      alumno,
       checkedPres,
       checkedDev,
       presObs,
@@ -38,6 +38,7 @@ class Curso extends React.Component {
       onDevChanged,
       onPresObsChanged,
       onDevObsChanged,
+      cursoIndex,
     } = this.props;
     return (
       <div>
@@ -93,6 +94,12 @@ class Curso extends React.Component {
             ref={this.devTextArea}
           ></textarea>
         </div>
+        {/*<input
+          className="btn btn-primary"
+          type="button"
+          value="Asistente de devolución"
+    />*/}
+        <IncidenciaModalComponent alumno={alumno} cursoIndex={cursoIndex} />
       </div>
     );
   }

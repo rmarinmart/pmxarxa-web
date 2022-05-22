@@ -148,6 +148,7 @@ class Alumno extends Component {
 
     return (
       <Curso
+        alumno={alumno}
         checkedPres={alumno.esopres1}
         checkedDev={alumno.esodev1}
         presObs={alumno.esopresobs1}
@@ -156,6 +157,7 @@ class Alumno extends Component {
         onDevChanged={onDevChanged}
         onPresObsChanged={onPresObsChanged}
         onDevObsChanged={onDevObsChanged}
+        cursoIndex={index}
       />
     );
   }
@@ -199,6 +201,7 @@ class Alumno extends Component {
 
     return (
       <Curso
+        alumno={alumno}
         checkedPres={alumno.esopres2}
         checkedDev={alumno.esodev2}
         presObs={alumno.esopresobs2}
@@ -207,6 +210,7 @@ class Alumno extends Component {
         onDevChanged={onDevChanged}
         onPresObsChanged={onPresObsChanged}
         onDevObsChanged={onDevObsChanged}
+        cursoIndex={index}
       />
     );
   }
@@ -250,6 +254,7 @@ class Alumno extends Component {
 
     return (
       <Curso
+        alumno={alumno}
         checkedPres={alumno.esopres3}
         checkedDev={alumno.esodev3}
         presObs={alumno.esopresobs3}
@@ -258,6 +263,7 @@ class Alumno extends Component {
         onDevChanged={onDevChanged}
         onPresObsChanged={onPresObsChanged}
         onDevObsChanged={onDevObsChanged}
+        cursoIndex={index}
       />
     );
   }
@@ -300,6 +306,7 @@ class Alumno extends Component {
     };
     return (
       <Curso
+        alumno={alumno}
         checkedPres={alumno.esopres4}
         checkedDev={alumno.esodev4}
         presObs={alumno.esopresobs4}
@@ -308,6 +315,7 @@ class Alumno extends Component {
         onDevChanged={onDevChanged}
         onPresObsChanged={onPresObsChanged}
         onDevObsChanged={onDevObsChanged}
+        cursoIndex={index}
       />
     );
   }
@@ -351,6 +359,7 @@ class Alumno extends Component {
 
     return (
       <Curso
+        alumno={alumno}
         checkedPres={alumno.fpbpres1}
         checkedDev={alumno.fpbdev1}
         presObs={alumno.fpbpresobs1}
@@ -359,6 +368,7 @@ class Alumno extends Component {
         onDevChanged={onDevChanged}
         onPresObsChanged={onPresObsChanged}
         onDevObsChanged={onDevObsChanged}
+        cursoIndex={index}
       />
     );
   }
@@ -402,6 +412,7 @@ class Alumno extends Component {
 
     return (
       <Curso
+        alumno={alumno}      
         checkedPres={alumno.fpbpres2}
         checkedDev={alumno.fpbdev2}
         presObs={alumno.fpbpresobs2}
@@ -410,6 +421,7 @@ class Alumno extends Component {
         onDevChanged={onDevChanged}
         onPresObsChanged={onPresObsChanged}
         onDevObsChanged={onDevObsChanged}
+        cursoIndex={index}
       />
     );
   }

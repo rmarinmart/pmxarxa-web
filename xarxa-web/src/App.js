@@ -12,6 +12,7 @@ import Alumno from "./components/alumno.component";
 import Buscador from "./components/buscador.component";
 import Creador from "./components/creador.component";
 import NavBar from "./components/navbar.component";
+import Incidencias from "./components/incidencias.component";
 
 function BuildAlumnoComponent() {
   let { id } = useParams();
@@ -30,6 +31,7 @@ class App extends Component {
             <Route path={"/alumnos/:id"} element={<BuildAlumnoComponent />} />
             <Route exact path={"/busqueda"} element={<Buscador />} />
             <Route exact path={"/nuevo"} element={<Creador />} />
+            <Route exact path={"/incidencias"} element={<Incidencias />} />
           </Routes>
         </div>
       </Router>
