@@ -16,12 +16,12 @@ class NavBar extends React.Component {
           </li>
           <li className="nav-item">
             <Link to={"/nuevo"} className="nav-link">
-              Nuevo
+              Nuevo alumno
             </Link>
           </li>
           <li className="nav-item">
             <Link to={"/incidencias"} className="nav-link">
-              Incidencias
+              Resumen de incidencias
             </Link>
           </li>
         </div>

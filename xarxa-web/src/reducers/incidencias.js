@@ -1,4 +1,8 @@
-import { RETRIEVE_INCIDENCIAS, CREATE_INCIDENCIA } from "../actions/types";
+import {
+  RETRIEVE_INCIDENCIAS,
+  CREATE_INCIDENCIA,
+  DELETE_INCIDENCIA,
+} from "../actions/types";
 const initialState = [];
 function incidenciaReducer(incidencias = initialState, action) {
   const { type, payload } = action;
@@ -6,7 +10,9 @@ function incidenciaReducer(incidencias = initialState, action) {
     case RETRIEVE_INCIDENCIAS:
       return payload;
     case CREATE_INCIDENCIA:
-        return [...incidencias, payload];
+      return [...incidencias, payload];
+    case DELETE_INCIDENCIA:
+      return incidencias.filter(({ id }) => id !== payload.id);
     default:
       return incidencias;
   }

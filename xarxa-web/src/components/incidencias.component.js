@@ -1,33 +1,67 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { retrieveIncidencias } from "../actions/incidencias";
+import { deleteIncidencia } from "../actions/incidencias";
+import { retrieveAlumnos } from "../actions/alumnos";
+import { tabConfig } from "../config";
+import Incidencia from "./incidencia.component";
+import Toast from "./toast.component";
+import { Toast as BootstrapToast } from "../../node_modules/bootstrap/dist/js/bootstrap.esm";
 
 class Incidencias extends Component {
+  deletionToast = React.createRef();
+  state = { message: "" };
+
   componentDidMount() {
+    this.props.retrieveAlumnos();
     this.props.retrieveIncidencias();
   }
 
+  deleteIncidencia = (id) => {
+    this.props
+      .deleteIncidencia(id)
+      .then(() => {
+        console.log("Incidencia borrada correctamente");
+      })
+      .catch((e) => {
+        this.setState({ message: "Error borrando incidencia: " + e.message });
+        new BootstrapToast(this.deletionToast.current.toastRef.current).show();
+      });
+  };
+
   renderIncidencias() {
+    if (!this.props.incidencias) return;
+    if (!this.props.alumnos) return <div>"Loading..."</div>;
     return this.props.incidencias.map((incidencia) => {
+      if (this.props.alumnoId && incidencia.alumnoId !== this.props.alumnoId)
+        return "";
+      const alumno = this.props.alumnos.find(
+        (element) => element.id === incidencia.alumnoId
+      );
+      if (!alumno) return "";
       return (
-        <a
-          href={`./#/incidencias/${incidencia.id}`}
+        <Incidencia
+          alumno={alumno}
+          curso={tabConfig[incidencia.curso].tabName}
+          incidencia={incidencia}
           key={incidencia.id}
-          className="list-group-item list-group-item-action"
-          aria-current="true"
-        >
-          {`${incidencia.id} ${incidencia.descripcion} ${incidencia.curso}  ${incidencia.alumnoId}`}
-        </a>
+          onDeleteClicked={this.deleteIncidencia}
+        />
       );
     });
   }
 
+  buildHeader = () => {
+    if (this.props.removeHeader) return "";
+    return <h1>Incidencias: {this.props.incidencias.length}</h1>;
+  };
+
   render() {
-    const { incidencias } = this.props;
     return (
       <div>
-        <h1>Incidencias: {incidencias.length}</h1>
+        {this.buildHeader()}
         <div>{this.renderIncidencias()}</div>
+        <Toast ref={this.deletionToast} message={this.state.message} />
       </div>
     );
   }
@@ -35,8 +69,11 @@ class Incidencias extends Component {
 const mapStateToProps = (state) => {
   return {
     incidencias: state.incidencias,
+    alumnos: state.alumnos,
   };
 };
 export default connect(mapStateToProps, {
   retrieveIncidencias,
+  retrieveAlumnos,
+  deleteIncidencia,
 })(Incidencias);

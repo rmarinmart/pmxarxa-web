@@ -7,7 +7,7 @@ import { Toast as BootstrapToast } from "../../node_modules/bootstrap/dist/js/bo
 
 class IncidenciaModal extends React.Component {
   constructor(props) {
-    super(props);   
+    super(props);
     this.saveIncidencia = this.saveIncidencia.bind(this);
     this.state = {
       alumnoId: props.alumno.id,
@@ -15,7 +15,7 @@ class IncidenciaModal extends React.Component {
       curso: props.cursoIndex,
       message: "",
     };
-    this.creationToast = React.createRef();    
+    this.creationToast = React.createRef();
     this.closeButton = React.createRef();
   }
 
@@ -24,17 +24,18 @@ class IncidenciaModal extends React.Component {
     const { alumnoId, descripcion, curso } = this.state;
     this.props
       .createIncidencia(alumnoId, descripcion, curso)
-      .then((data) => {
-        this.setState({descripcion:""});
+      .then(() => {
+        this.setState({ descripcion: "" });
+        this.props.onIncidenciaCreada(true);
         this.closeButton.current.click();
       })
       .catch((e) => {
-        this.setState({message: "Error creando incidencia: " + e.message})
+        this.setState({ message: "Error creando incidencia: " + e.message });
         new BootstrapToast(this.creationToast.current.toastRef.current).show();
       });
   }
 
-  render() {    
+  render() {
     return (
       <div>
         <input
@@ -67,9 +68,28 @@ class IncidenciaModal extends React.Component {
               </div>
               <div className="modal-body">
                 <div className="mb-3">
-                  <label htmlFor="descIncidenciaControlInput" className="form-label">Curso: {tabConfig[this.props.cursoIndex].tabName}</label>
-                  <textarea className="form-control" id="descIncidenciaControlInput" placeholder="Describe la incidencia aquí" rows="3" value={this.state.descripcion} onChange={(e)=>this.setState({descripcion: e.target.value})}/>
-                </div>                
+                  <h6
+                    htmlFor="descIncidenciaControlInput"
+                    className="form-label"
+                  >
+                    Curso: {tabConfig[this.props.cursoIndex].tabName}
+                  </h6>
+                  <h6>
+                    Al crear una incidencia se marcará la devolución como
+                    realizada, pero el alumno no podrá recibir un lote mientras
+                    tenga incidencias pendientes de resolución.
+                  </h6>
+                  <textarea
+                    className="form-control"
+                    id="descIncidenciaControlInput"
+                    placeholder="Describe la incidencia aquí"
+                    rows="3"
+                    value={this.state.descripcion}
+                    onChange={(e) =>
+                      this.setState({ descripcion: e.target.value })
+                    }
+                  />
+                </div>
               </div>
               <div className="modal-footer">
                 <button
@@ -80,17 +100,18 @@ class IncidenciaModal extends React.Component {
                 >
                   Cerrar sin crear
                 </button>
-                <button type="button" className="btn btn-primary" onClick={(e)=>this.saveIncidencia(e)}>
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  onClick={(e) => this.saveIncidencia(e)}
+                >
                   Guardar incidencia
                 </button>
               </div>
             </div>
           </div>
         </div>
-        <Toast
-          ref={this.creationToast}
-          message={this.state.message}
-        />           
+        <Toast ref={this.creationToast} message={this.state.message} />
       </div>
     );
   }

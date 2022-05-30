@@ -1,4 +1,4 @@
-import { RETRIEVE_INCIDENCIAS, CREATE_INCIDENCIA } from "./types";
+import { RETRIEVE_INCIDENCIAS, CREATE_INCIDENCIA, DELETE_INCIDENCIA } from "./types";
 import IncidenciaDataService from "../services/incidencia.service";
 
 export const retrieveIncidencias = () => async (dispatch) => {
@@ -23,5 +23,17 @@ export const createIncidencia = (alumnoId, descripcion, curso) => async (dispatc
     return Promise.resolve(res.data);
   } catch (err) {
     return Promise.reject(err);
+  }
+};
+
+export const deleteIncidencia = (id) => async (dispatch) => {
+  try {
+    await IncidenciaDataService.delete(id);
+    dispatch({
+      type: DELETE_INCIDENCIA,
+      payload: { id },
+    });
+  } catch (err) {
+    console.log(err);
   }
 };
