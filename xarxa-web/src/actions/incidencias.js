@@ -1,4 +1,4 @@
-import { RETRIEVE_INCIDENCIAS } from "./types";
+import { RETRIEVE_INCIDENCIAS, CREATE_INCIDENCIA } from "./types";
 import IncidenciaDataService from "../services/incidencia.service";
 
 export const retrieveIncidencias = () => async (dispatch) => {
@@ -10,5 +10,18 @@ export const retrieveIncidencias = () => async (dispatch) => {
     });
   } catch (err) {
     console.log(err);
+  }
+};
+
+export const createIncidencia = (alumnoId, descripcion, curso) => async (dispatch) => {
+  try {
+    const res = await IncidenciaDataService.create({ alumnoId, descripcion, curso });
+    dispatch({
+      type: CREATE_INCIDENCIA,
+      payload: res.data,
+    });
+    return Promise.resolve(res.data);
+  } catch (err) {
+    return Promise.reject(err);
   }
 };

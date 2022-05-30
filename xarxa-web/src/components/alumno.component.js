@@ -7,21 +7,7 @@ import Curso from "./curso.component";
 import Toast from "./toast.component";
 import { Toast as BootstrapToast } from "../../node_modules/bootstrap/dist/js/bootstrap.esm";
 import CabeceraAlumno from "./cabeceraAlumno.component";
-
-const ESO1 = 0;
-const ESO2 = 1;
-const ESO3 = 2;
-const ESO4 = 3;
-const FPB1 = 4;
-const FPB2 = 5;
-const tabConfig = [
-  { tabName: "1º ESO", tabId: ESO1 },
-  { tabName: "2º ESO", tabId: ESO2 },
-  { tabName: "3º ESO", tabId: ESO3 },
-  { tabName: "4º ESO", tabId: ESO4 },
-  { tabName: "1º FPB", tabId: FPB1 },
-  { tabName: "2º FPB", tabId: FPB2 },
-];
+import { ESO1, ESO2, ESO3, ESO4, FPB1, FPB2, tabConfig} from "../config";
 
 class Alumno extends Component {
   constructor(props) {
