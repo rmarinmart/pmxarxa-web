@@ -127,6 +127,7 @@ class Alumno extends Component {
         {
           ...alumno,
           esodevobs1: text,
+          esodev1: text.length > 0?true:alumno.esodev1,
         },
         true
       );
@@ -180,6 +181,7 @@ class Alumno extends Component {
         {
           ...alumno,
           esodevobs2: text,
+          esodev2: text.length > 0?true:alumno.esodev2,
         },
         true
       );
@@ -233,6 +235,7 @@ class Alumno extends Component {
         {
           ...alumno,
           esodevobs3: text,
+          esodev3: text.length > 0?true:alumno.esodev3,
         },
         true
       );
@@ -286,6 +289,7 @@ class Alumno extends Component {
         {
           ...alumno,
           esodevobs4: text,
+          esodev4: text.length > 0?true:alumno.esodev4,
         },
         true
       );
@@ -338,6 +342,7 @@ class Alumno extends Component {
         {
           ...alumno,
           fpbdevobs1: text,
+          fpbdev1: text.length > 0?true:alumno.fpbdev1,
         },
         true
       );
@@ -391,6 +396,7 @@ class Alumno extends Component {
         {
           ...alumno,
           fpbdevobs2: text,
+          fpbdev2: text.length > 0?true:alumno.fpbdev2,
         },
         true
       );
