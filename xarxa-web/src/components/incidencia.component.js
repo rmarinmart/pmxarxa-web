@@ -27,7 +27,7 @@ class Incidencia extends React.Component {
             <div className="row">
               <div className="col-auto">
                 <label className="form-label">
-                  <a href={`./#/alumnos/${this.props.alumno.id}`}>
+                  <a href={`./#/incidencias/${this.props.alumno.id}`}>
                     <b>
                       {`${this.props.alumno.nombre} ${this.props.alumno.apellidos}`}
                     </b>

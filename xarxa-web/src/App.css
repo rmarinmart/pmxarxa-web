@@ -11,3 +11,9 @@
   max-width: 300px;
   margin: auto;
 }
+
+@media print {
+  .navbar {
+    display: none !important;
+  }
+}

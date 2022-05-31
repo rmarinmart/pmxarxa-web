@@ -61,7 +61,7 @@ class Curso extends React.Component {
             disabled={true}
             onChange={(element) => onPresChanged(element.target.checked)}
           />
-          <div class="alert alert-danger" role="alert">
+          <div className="alert alert-danger" role="alert">
             No se puede realizar un préstamo hasta que el alumno resuelva las
             incidencias pendientes
           </div>

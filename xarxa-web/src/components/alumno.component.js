@@ -7,7 +7,7 @@ import Curso from "./curso.component";
 import Toast from "./toast.component";
 import { Toast as BootstrapToast } from "../../node_modules/bootstrap/dist/js/bootstrap.esm";
 import CabeceraAlumno from "./cabeceraAlumno.component";
-import { ESO1, ESO2, ESO3, ESO4, FPB1, FPB2, tabConfig} from "../config";
+import { ESO1, ESO2, ESO3, ESO4, FPB1, FPB2, tabConfig } from "../config";
 
 class Alumno extends Component {
   constructor(props) {
@@ -117,6 +117,7 @@ class Alumno extends Component {
         {
           ...alumno,
           esopresobs1: text,
+          esopres1: text.length > 0 ? true : alumno.esopres1,
         },
         true
       );
@@ -127,7 +128,7 @@ class Alumno extends Component {
         {
           ...alumno,
           esodevobs1: text,
-          esodev1: text.length > 0?true:alumno.esodev1,
+          esodev1: text.length > 0 ? true : alumno.esodev1,
         },
         true
       );
@@ -171,6 +172,7 @@ class Alumno extends Component {
         {
           ...alumno,
           esopresobs2: text,
+          esopres2: text.length > 0 ? true : alumno.esopres2,
         },
         true
       );
@@ -181,7 +183,7 @@ class Alumno extends Component {
         {
           ...alumno,
           esodevobs2: text,
-          esodev2: text.length > 0?true:alumno.esodev2,
+          esodev2: text.length > 0 ? true : alumno.esodev2,
         },
         true
       );
@@ -225,6 +227,7 @@ class Alumno extends Component {
         {
           ...alumno,
           esopresobs3: text,
+          esopres3: text.length > 0 ? true : alumno.esopres3,
         },
         true
       );
@@ -235,7 +238,7 @@ class Alumno extends Component {
         {
           ...alumno,
           esodevobs3: text,
-          esodev3: text.length > 0?true:alumno.esodev3,
+          esodev3: text.length > 0 ? true : alumno.esodev3,
         },
         true
       );
@@ -279,6 +282,7 @@ class Alumno extends Component {
         {
           ...alumno,
           esopresobs4: text,
+          esopres4: text.length > 0 ? true : alumno.esopres4,
         },
         true
       );
@@ -289,7 +293,7 @@ class Alumno extends Component {
         {
           ...alumno,
           esodevobs4: text,
-          esodev4: text.length > 0?true:alumno.esodev4,
+          esodev4: text.length > 0 ? true : alumno.esodev4,
         },
         true
       );
@@ -332,6 +336,7 @@ class Alumno extends Component {
         {
           ...alumno,
           fpbpresobs1: text,
+          fpbpres1: text.length > 0 ? true : alumno.fpbpres1,
         },
         true
       );
@@ -342,7 +347,7 @@ class Alumno extends Component {
         {
           ...alumno,
           fpbdevobs1: text,
-          fpbdev1: text.length > 0?true:alumno.fpbdev1,
+          fpbdev1: text.length > 0 ? true : alumno.fpbdev1,
         },
         true
       );
@@ -386,6 +391,7 @@ class Alumno extends Component {
         {
           ...alumno,
           fpbpresobs2: text,
+          fpbpres2: text.length > 0 ? true : alumno.fpbpres2,
         },
         true
       );
@@ -396,7 +402,7 @@ class Alumno extends Component {
         {
           ...alumno,
           fpbdevobs2: text,
-          fpbdev2: text.length > 0?true:alumno.fpbdev2,
+          fpbdev2: text.length > 0 ? true : alumno.fpbdev2,
         },
         true
       );
@@ -404,7 +410,7 @@ class Alumno extends Component {
 
     return (
       <Curso
-        alumno={alumno}      
+        alumno={alumno}
         checkedPres={alumno.fpbpres2}
         checkedDev={alumno.fpbdev2}
         presObs={alumno.fpbpresobs2}
