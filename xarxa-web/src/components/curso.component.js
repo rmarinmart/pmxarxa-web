@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { retrieveIncidencias } from "../actions/incidencias";
+import AsistenteDevolucion from "./asistentedevolucion.component";
 import IncidenciaModalComponent from "./incidenciaModal.component";
 import Incidencias from "./incidencias.component";
 
@@ -88,6 +89,11 @@ class Curso extends React.Component {
     }
   }
 
+  onAddComment = (newComment) => {
+    if(this.props.devObs.length > 0) newComment = "\n" +newComment;
+    this.props.onDevObsChanged(this.props.devObs + newComment)
+  }
+
   render() {
     const {
       alumno,
@@ -150,6 +156,8 @@ class Curso extends React.Component {
           cursoIndex={cursoIndex}
           onIncidenciaCreada={onDevChanged}
         />
+        <p/>
+        <AsistenteDevolucion onAddComment={this.onAddComment}/>
       </div>
     );
   }
