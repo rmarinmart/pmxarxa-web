@@ -10,7 +10,7 @@ onSelectItem = (item, index)=>{
 renderItems = ()=> {
     return this.props.items.map((item, index)=> {        
         const active = index === this.state.selectedItem?"active":"";
-        return  <li key={index} className={`list-group-item ${active}`} aria-current="true" onClick={()=>this.onSelectItem(item, index)}>{item}</li>
+        return  <li key={index} className={`list-group-item ${active} ${item[1]}`} aria-current="true" onClick={()=>this.onSelectItem(item[0], index)}>{item[0]}</li>
     });
 }
 

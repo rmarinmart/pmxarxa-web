@@ -1,18 +1,35 @@
 import React from "react";
 import ListGroup from "./listGroup.component";
 
+const asignaturas1ESO = ["Valenciano", "Castellano", "Inglés", "Biología y Geología", "Tecnología", "Música", "Geografía e Historia"];
+const asignaturas2ESO = ["Valenciano", "Castellano", "Inglés", "Física y Química", "Tecnología", "Música", "Geografía e Historia"];
+const asignaturas3ESO = ["Valenciano", "Castellano", "Inglés", "Biología y Geología", "Tecnología", "Música", "Geografía e Historia", "Física y Química"];
+const asignaturas4ESO = ["Valenciano", "Inglés", "Biología y Geología", "Tecnología", "Música", "Geografía e Historia"];
+const asignaturas1FPB = ["Taller de llengua", "Ciencias aplicadas I", "Comunicación y sociedad I"];
+const asignaturas2FPB = ["Taller de llengua", "Ciencias aplicadas II", "Comunicación y sociedad II"];
+const opts1ESO = ["Francés", "Religión", "Valores"];
+const opts2ESO = ["Francés", "Religión", "Valores"];
+const opts3ESO = ["Francés", "Religión", "Valores", "Cultura clásica"];
+const opts4ESO = ["Francés", "Religión", "Valores", "Filosofía", "Economía", "Latín", "Cultura clàsica"];
+const opts1FPB = [];
+const opts2FPB = [];
 
-const asignaturas = ["Tecnología", "Música", "Lengua", "Matemáticas", "Geografía", "Inglés", "Valenciano"];
+const asignaturas = [asignaturas1ESO,asignaturas2ESO,asignaturas3ESO,asignaturas4ESO, asignaturas1FPB, asignaturas2FPB];
+const optativas = [opts1ESO, opts2ESO,opts3ESO,opts4ESO, opts1FPB, opts2FPB];
 const problemasTipicos = ["Bordes estropeados", "Escrito a lápiz", "Escrito a bolígrafo", "Subrayado con marcador", "Tapas muy estropeadas"];
 
 class AsistenteDevolucion extends React.Component {
   constructor(props) {
     super(props);
     this.closeButton = React.createRef();
+    this.asignaturaSeleccionada = asignaturas[this.props.curso][0];
+    this.problemaSeleccionado =problemasTipicos[0];
+    this.asignaturasConfig = asignaturas[this.props.curso].map((asignatura)=>[asignatura, "list-group-item-primary"]);
+    this.asignaturasConfig.push(...(optativas[this.props.curso].map((opt)=>[opt,"list-group-item-info"])));
+    this.problemasConfig = problemasTipicos.map((problema)=>[problema, "list-group-item-danger"]);
+
   }
-  asignaturaSeleccionada = asignaturas[0];
-  problemaSeleccionado =problemasTipicos[0];
-  
+
   onSelectAsignatura = (asignatura) => this.asignaturaSeleccionada = asignatura;
   onSelectProblema = (problema) => this.problemaSeleccionado = problema;
 
@@ -21,6 +38,7 @@ class AsistenteDevolucion extends React.Component {
   }
 
   render() {
+    
     return (
       <div>
         <input
@@ -53,11 +71,11 @@ class AsistenteDevolucion extends React.Component {
               <div className="modal-body">
                   <div className="row">
                       <div className="col">
-                        <ListGroup items={asignaturas} onSelectItem={this.onSelectAsignatura}/>
+                        <ListGroup items={this.asignaturasConfig} onSelectItem={this.onSelectAsignatura}/>
                       </div>
                       <div className="col">
                       <ul className="list-group">
-                        <ListGroup items={problemasTipicos} onSelectItem={this.onSelectProblema}/>
+                        <ListGroup items={this.problemasConfig} onSelectItem={this.onSelectProblema}/>
                       </ul>
                       </div>
                   </div>

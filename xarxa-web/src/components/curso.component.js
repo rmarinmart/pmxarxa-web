@@ -157,7 +157,7 @@ class Curso extends React.Component {
           onIncidenciaCreada={onDevChanged}
         />
         <p/>
-        <AsistenteDevolucion onAddComment={this.onAddComment}/>
+        <AsistenteDevolucion onAddComment={this.onAddComment} curso={cursoIndex} />
       </div>
     );
   }
