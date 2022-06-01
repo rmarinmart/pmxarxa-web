@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { retrieveIncidencias } from "../actions/incidencias";
 import { retrieveAlumnos } from "../actions/alumnos";
 import { tabConfig } from "../config";
-import Incidencia from "./incidencia.component";
 
 class InformeIncidencias extends Component {
   componentDidMount() {
