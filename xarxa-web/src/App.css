@@ -13,7 +13,7 @@
 }
 
 @media print {
-  .navbar {
+  .no-print {
     display: none !important;
   }
 }

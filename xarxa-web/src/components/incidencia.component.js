@@ -1,7 +1,19 @@
 import React from "react";
+import { Tooltip } from "../../node_modules/bootstrap/dist/js/bootstrap.esm";
 
 class Incidencia extends React.Component {
   btnRef = React.createRef();
+  tooltips = [];
+
+  componentDidMount() {
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+    this.tooltips = [...tooltipTriggerList].map(tooltipTriggerEl => new Tooltip(tooltipTriggerEl));
+
+  }
+
+  componentWillUnmount() {
+    this.tooltips.map(tooltip=>tooltip.dispose());
+  }
 
   onDelete = (e) => {
     if (e.target === this.btnRef.current) {
@@ -27,7 +39,7 @@ class Incidencia extends React.Component {
             <div className="row">
               <div className="col-auto">
                 <label className="form-label">
-                  <a href={`./#/incidencias/${this.props.alumno.id}`}>
+                  <a href={`./#/incidencias/${this.props.alumno.id}`} data-bs-toggle="tooltip" title="Generar reporte de incidencia">
                     <b>
                       {`${this.props.alumno.nombre} ${this.props.alumno.apellidos}`}
                     </b>

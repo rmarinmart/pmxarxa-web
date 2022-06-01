@@ -44,6 +44,9 @@ class InformeIncidencias extends Component {
         <ul className="list-group list-group-flush">
           {this.renderIncidencias(alumno)}
         </ul>
+        <p />
+        <p />
+        <p>Petrer, {new Date().toLocaleDateString("es-ES", {day:"numeric", year:"numeric", month:"long"})}</p>
         <hr />
         <hr />
         <hr />
@@ -52,6 +55,7 @@ class InformeIncidencias extends Component {
           <p className="col align-self-start">Firma del interesado</p>
           <p className="col align-self-end">Firma del responsable Xarxa</p>
         </div>
+        <button className="btn btn-primary no-print" type="button" onClick={window.print}>Imprimir informe</button>
       </div>
     );
   }

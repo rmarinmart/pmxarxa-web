@@ -27,10 +27,12 @@ class Curso extends React.Component {
   componentDidMount() {
     this.ajustarAlturaTextAreas();
     this.props.retrieveIncidencias();
+    this.comprobarIncidencias();
   }
 
   componentDidUpdate() {
     this.ajustarAlturaTextAreas();
+    this.comprobarIncidencias();
   }
 
   comprobarIncidencias() {
@@ -87,7 +89,6 @@ class Curso extends React.Component {
   }
 
   render() {
-    this.comprobarIncidencias();
     const {
       alumno,
       checkedPres,
@@ -143,6 +144,7 @@ class Curso extends React.Component {
           ></textarea>
         </div>
         <Incidencias removeHeader={true} alumnoId={alumno.id} />
+        <p/>
         <IncidenciaModalComponent
           alumno={alumno}
           cursoIndex={cursoIndex}
