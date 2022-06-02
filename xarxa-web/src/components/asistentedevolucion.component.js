@@ -3,14 +3,14 @@ import ListGroup from "./listGroup.component";
 
 const asignaturas1ESO = ["Valenciano", "Castellano", "Inglés", "Biología y Geología", "Tecnología", "Música", "Geografía e Historia"];
 const asignaturas2ESO = ["Valenciano", "Castellano", "Inglés", "Física y Química", "Tecnología", "Música", "Geografía e Historia"];
-const asignaturas3ESO = ["Valenciano", "Castellano", "Inglés", "Biología y Geología", "Tecnología", "Música", "Geografía e Historia", "Física y Química"];
-const asignaturas4ESO = ["Valenciano", "Inglés", "Biología y Geología", "Tecnología", "Música", "Geografía e Historia"];
+const asignaturas3ESO = ["Valenciano", "Castellano", "Inglés", "Biología y Geología", "Música", "Geografía e Historia", "Física y Química"];
+const asignaturas4ESO = ["Valenciano", "Inglés", "Biología y Geología", "Geografía e Historia"];
 const asignaturas1FPB = ["Taller de llengua", "Ciencias aplicadas I", "Comunicación y sociedad I"];
 const asignaturas2FPB = ["Taller de llengua", "Ciencias aplicadas II", "Comunicación y sociedad II"];
 const opts1ESO = ["Francés", "Religión", "Valores"];
 const opts2ESO = ["Francés", "Religión", "Valores"];
 const opts3ESO = ["Francés", "Religión", "Valores", "Cultura clásica"];
-const opts4ESO = ["Francés", "Religión", "Valores", "Filosofía", "Economía", "Latín", "Cultura clàsica"];
+const opts4ESO = ["Francés", "Religión", "Valores", "Economía", "Latín", "Cultura clàsica", "Música", "Tecnología"];
 const opts1FPB = [];
 const opts2FPB = [];
 
@@ -27,6 +27,7 @@ class AsistenteDevolucion extends React.Component {
     this.asignaturasConfig = asignaturas[this.props.curso].map((asignatura)=>[asignatura, "list-group-item-primary"]);
     this.asignaturasConfig.push(...(optativas[this.props.curso].map((opt)=>[opt,"list-group-item-info"])));
     this.problemasConfig = problemasTipicos.map((problema)=>[problema, "list-group-item-danger"]);
+    this.problemasConfig.push(["En buen estado", "list-group-item-success"])
 
   }
 
