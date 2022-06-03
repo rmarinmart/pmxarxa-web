@@ -56,6 +56,8 @@ class InformeIncidencias extends Component {
           <p className="col align-self-end">Firma del responsable Xarxa</p>
         </div>
         <button className="btn btn-primary no-print" type="button" onClick={window.print}>Imprimir informe</button>
+        <p />
+        <a href={`./#/alumnos/${alumno.id}`} className="no-print">Volver a la ficha del alumno</a>
       </div>
     );
   }
