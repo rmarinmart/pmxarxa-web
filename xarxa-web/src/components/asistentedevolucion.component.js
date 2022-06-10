@@ -58,7 +58,7 @@ const asignaturas3PMAR = [
   "All clear 2",
   "Música",
 ];
-const asignaturas4PMAR = ["PMAR4-a", "PMAR4-b"];
+const asignaturas4PMAR = ["Ciencias sociales", "Castellano", "Matemáticas", "Ambito tecnológico", "All clear 3"];
 const opts1ESO = ["Francés", "Religión", "Valores"];
 const opts2ESO = ["Francés", "Religión", "Valores"];
 const opts3ESO = ["Francés", "Religión", "Valores", "Cultura clásica"];
@@ -76,7 +76,7 @@ const opts1FPB = [];
 const opts2FPB = [];
 const opts2PMAR = ["Valores", "Religión", "Francés"];
 const opts3PMAR = ["Valores", "Religión"];
-const opts4PMAR = ["OPT-PMAR4a", "OPT-PMAR4b"];
+const opts4PMAR = ["Música", "Cultura científica", "Francés"];
 
 const asignaturas = [
   asignaturas1ESO,
