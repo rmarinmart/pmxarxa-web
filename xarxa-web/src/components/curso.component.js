@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { retrieveIncidencias } from "../actions/incidencias";
+import { searchIncidencias } from "../actions/incidencias";
 import AsistenteDevolucion from "./asistentedevolucion.component";
 import IncidenciaModalComponent from "./incidenciaModal.component";
 import Incidencias from "./incidencias.component";
@@ -27,8 +27,7 @@ class Curso extends React.Component {
 
   componentDidMount() {
     this.ajustarAlturaTextAreas();
-    if (!this.props.incidencias || this.props.incidencias.length === 0)
-      this.props.retrieveIncidencias();
+    this.props.searchIncidencias(this.props.alumno.id);
     this.comprobarIncidencias();
   }
 
@@ -164,4 +163,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { retrieveIncidencias })(Curso);
+export default connect(mapStateToProps, { searchIncidencias })(Curso);

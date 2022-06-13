@@ -18,10 +18,10 @@ class Incidencias extends Component {
   componentDidMount() {
     if (!this.props.alumnos || this.props.alumnos.length === 0)
       this.props.retrieveAlumnos();
-    if (!this.props.incidencias || this.props.incidencias.length === 0) {
-      this.props.retrieveIncidencias();
-    } else if (this.props.alumnoId) {
+    if (this.props.alumnoId) {
       this.props.searchIncidencias(this.props.alumnoId);
+    } else if (!this.props.incidencias || this.props.incidencias.length === 0) {
+      this.props.retrieveIncidencias();
     }
   }
 
