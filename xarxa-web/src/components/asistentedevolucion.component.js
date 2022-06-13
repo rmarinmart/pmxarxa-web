@@ -25,7 +25,7 @@ const asignaturas3ESO = [
   "Inglés",
   "Biología y Geología",
   "Música",
-  "Geography"",
+  "Geography",
   "Física y Química",
 ];
 const asignaturas4ESO = [
