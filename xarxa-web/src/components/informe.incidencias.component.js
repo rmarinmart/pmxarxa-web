@@ -6,8 +6,10 @@ import { tabConfig } from "../config";
 
 class InformeIncidencias extends Component {
   componentDidMount() {
-    this.props.retrieveAlumnos();
-    this.props.retrieveIncidencias();
+    if (!this.props.alumnos || this.props.alumnos.length === 0)
+      this.props.retrieveAlumnos();
+    if (!this.props.incidencias || this.props.incidencias.length === 0)
+      this.props.retrieveIncidencias();
   }
 
   renderIncidencias(alumno) {
@@ -46,7 +48,14 @@ class InformeIncidencias extends Component {
         </ul>
         <p />
         <p />
-        <p>Petrer, {new Date().toLocaleDateString("es-ES", {day:"numeric", year:"numeric", month:"long"})}</p>
+        <p>
+          Petrer,{" "}
+          {new Date().toLocaleDateString("es-ES", {
+            day: "numeric",
+            year: "numeric",
+            month: "long",
+          })}
+        </p>
         <hr />
         <hr />
         <hr />
@@ -55,9 +64,17 @@ class InformeIncidencias extends Component {
           <p className="col align-self-start">Firma del interesado</p>
           <p className="col align-self-end">Firma del responsable Xarxa</p>
         </div>
-        <button className="btn btn-primary no-print" type="button" onClick={window.print}>Imprimir informe</button>
+        <button
+          className="btn btn-primary no-print"
+          type="button"
+          onClick={window.print}
+        >
+          Imprimir informe
+        </button>
         <p />
-        <a href={`./#/alumnos/${alumno.id}`} className="no-print">Volver a la ficha del alumno</a>
+        <a href={`./#/alumnos/${alumno.id}`} className="no-print">
+          Volver a la ficha del alumno
+        </a>
       </div>
     );
   }

@@ -457,6 +457,8 @@ class Alumno extends Component {
     const { currentAlumno, cursoIndex, activeSpinner, message, editName } =
       this.state;
 
+    if (!currentAlumno || !currentAlumno.id) return <h5>Cargando...</h5>;
+
     return (
       <div>
         <CabeceraAlumno

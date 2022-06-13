@@ -27,7 +27,8 @@ class Curso extends React.Component {
 
   componentDidMount() {
     this.ajustarAlturaTextAreas();
-    this.props.retrieveIncidencias();
+    if (!this.props.incidencias || this.props.incidencias.length === 0)
+      this.props.retrieveIncidencias();
     this.comprobarIncidencias();
   }
 
@@ -55,15 +56,6 @@ class Curso extends React.Component {
     if (this.state.incidenciasPendientes > 0 && !checkedPres) {
       return (
         <div className="mb-3">
-          <input
-            className="form-check-input"
-            type="checkbox"
-            value=""
-            id="flexCheckDefault"
-            checked={checkedPres}
-            disabled={true}
-            onChange={(element) => onPresChanged(element.target.checked)}
-          />
           <div className="alert alert-danger" role="alert">
             No se puede realizar un préstamo hasta que el alumno resuelva las
             incidencias pendientes
@@ -76,12 +68,12 @@ class Curso extends React.Component {
           <input
             className="form-check-input"
             type="checkbox"
-            value=""
-            id="flexCheckDefault"
+            value={""}
+            id="flexCheckDefault-1"
             checked={checkedPres}
             onChange={(element) => onPresChanged(element.target.checked)}
           />
-          <label className="form-check-label" htmlFor="flexCheckDefault">
+          <label className="form-check-label" htmlFor="flexCheckDefault-1">
             Préstamo realizado
           </label>
         </div>
@@ -127,8 +119,8 @@ class Curso extends React.Component {
           <input
             className="form-check-input"
             type="checkbox"
-            value=""
             id="flexCheckDefault2"
+            value={""}
             checked={checkedDev}
             onChange={(element) => onDevChanged(element.target.checked)}
           />

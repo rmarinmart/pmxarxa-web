@@ -7,7 +7,7 @@ class IncidenciaDataService {
     return http.get(`/incidencias/${id}`);
   }
   search(alumnoId) {
-    return http.get(`/incidencias?alumnoId=${alumnoId}`);
+    return http.get(`/incidencias/?alumnoId=${alumnoId}`);
   }
   create(data) {
     return http.post("/incidencias", data);

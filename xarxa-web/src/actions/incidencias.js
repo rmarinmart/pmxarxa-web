@@ -1,4 +1,9 @@
-import { RETRIEVE_INCIDENCIAS, CREATE_INCIDENCIA, DELETE_INCIDENCIA } from "./types";
+import {
+  RETRIEVE_INCIDENCIAS,
+  CREATE_INCIDENCIA,
+  DELETE_INCIDENCIA,
+  SEARCH_INCIDENCIAS,
+} from "./types";
 import IncidenciaDataService from "../services/incidencia.service";
 
 export const retrieveIncidencias = () => async (dispatch) => {
@@ -13,18 +18,35 @@ export const retrieveIncidencias = () => async (dispatch) => {
   }
 };
 
-export const createIncidencia = (alumnoId, descripcion, curso) => async (dispatch) => {
+export const searchIncidencias = (alumnoId) => async (dispatch) => {
   try {
-    const res = await IncidenciaDataService.create({ alumnoId, descripcion, curso });
+    const res = await IncidenciaDataService.search(alumnoId);
     dispatch({
-      type: CREATE_INCIDENCIA,
+      type: SEARCH_INCIDENCIAS,
       payload: res.data,
     });
-    return Promise.resolve(res.data);
   } catch (err) {
-    return Promise.reject(err);
+    console.log(err);
   }
 };
+
+export const createIncidencia =
+  (alumnoId, descripcion, curso) => async (dispatch) => {
+    try {
+      const res = await IncidenciaDataService.create({
+        alumnoId,
+        descripcion,
+        curso,
+      });
+      dispatch({
+        type: CREATE_INCIDENCIA,
+        payload: res.data,
+      });
+      return Promise.resolve(res.data);
+    } catch (err) {
+      return Promise.reject(err);
+    }
+  };
 
 export const deleteIncidencia = (id) => async (dispatch) => {
   try {

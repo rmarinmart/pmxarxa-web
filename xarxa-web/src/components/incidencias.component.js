@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { retrieveIncidencias } from "../actions/incidencias";
-import { deleteIncidencia } from "../actions/incidencias";
+import {
+  retrieveIncidencias,
+  deleteIncidencia,
+  searchIncidencias,
+} from "../actions/incidencias";
 import { retrieveAlumnos } from "../actions/alumnos";
 import { tabConfig } from "../config";
 import Incidencia from "./incidencia.component";
@@ -13,8 +16,13 @@ class Incidencias extends Component {
   state = { message: "" };
 
   componentDidMount() {
-    this.props.retrieveAlumnos();
-    this.props.retrieveIncidencias();
+    if (!this.props.alumnos || this.props.alumnos.length === 0)
+      this.props.retrieveAlumnos();
+    if (!this.props.incidencias || this.props.incidencias.length === 0) {
+      this.props.retrieveIncidencias();
+    } else if (this.props.alumnoId) {
+      this.props.searchIncidencias(this.props.alumnoId);
+    }
   }
 
   deleteIncidencia = (id) => {
@@ -74,6 +82,7 @@ const mapStateToProps = (state) => {
 };
 export default connect(mapStateToProps, {
   retrieveIncidencias,
+  searchIncidencias,
   retrieveAlumnos,
   deleteIncidencia,
 })(Incidencias);
