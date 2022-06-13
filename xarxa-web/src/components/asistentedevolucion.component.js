@@ -25,7 +25,7 @@ const asignaturas3ESO = [
   "Inglés",
   "Biología y Geología",
   "Música",
-  "Geografía e Historia",
+  "Geography"",
   "Física y Química",
 ];
 const asignaturas4ESO = [
@@ -61,7 +61,7 @@ const asignaturas3PMAR = [
 const asignaturas4PMAR = ["Ciencias sociales", "Castellano", "Matemáticas", "Ambito tecnológico", "All clear 3"];
 const opts1ESO = ["Francés", "Religión", "Valores"];
 const opts2ESO = ["Francés", "Religión", "Valores"];
-const opts3ESO = ["Francés", "Religión", "Valores", "Cultura clásica"];
+const opts3ESO = ["Francés", "Religión", "Valores", "Cultura clásica", "Inglés oral"];
 const opts4ESO = [
   "Francés",
   "Religión",
@@ -71,6 +71,7 @@ const opts4ESO = [
   "Cultura clàsica",
   "Música",
   "Tecnología",
+  "Inglés oral"
 ];
 const opts1FPB = [];
 const opts2FPB = [];
