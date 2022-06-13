@@ -10,9 +10,7 @@ class IncidenciaModal extends React.Component {
     super(props);
     this.saveIncidencia = this.saveIncidencia.bind(this);
     this.state = {
-      alumnoId: props.alumno.id,
       descripcion: "",
-      curso: props.cursoIndex,
       message: "",
     };
     this.creationToast = React.createRef();
@@ -21,9 +19,13 @@ class IncidenciaModal extends React.Component {
 
   saveIncidencia(e) {
     e.preventDefault();
-    const { alumnoId, descripcion, curso } = this.state;
+    const { descripcion } = this.state;
     this.props
-      .createIncidencia(alumnoId, descripcion, curso)
+      .createIncidencia(
+        this.props.alumno.id,
+        descripcion,
+        this.props.cursoIndex
+      )
       .then(() => {
         this.setState({ descripcion: "" });
         this.props.onIncidenciaCreada(true);
