@@ -90,9 +90,9 @@ class Curso extends React.Component {
   }
 
   onAddComment = (newComment) => {
-    if(this.props.devObs.length > 0) newComment = "\n" +newComment;
-    this.props.onDevObsChanged(this.props.devObs + newComment)
-  }
+    if (this.props.devObs.length > 0) newComment = "\n" + newComment;
+    this.props.onDevObsChanged(this.props.devObs + newComment);
+  };
 
   render() {
     const {
@@ -150,14 +150,17 @@ class Curso extends React.Component {
           ></textarea>
         </div>
         <Incidencias removeHeader={true} alumnoId={alumno.id} />
-        <p/>
+        <p />
         <IncidenciaModalComponent
           alumno={alumno}
           cursoIndex={cursoIndex}
           onIncidenciaCreada={onDevChanged}
         />
-        <p/>
-        <AsistenteDevolucion onAddComment={this.onAddComment} curso={cursoIndex} />
+        <p />
+        <AsistenteDevolucion
+          onAddComment={this.onAddComment}
+          curso={cursoIndex}
+        />
       </div>
     );
   }
