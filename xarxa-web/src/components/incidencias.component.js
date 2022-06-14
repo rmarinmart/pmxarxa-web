@@ -20,7 +20,7 @@ class Incidencias extends Component {
       this.props.retrieveAlumnos();
     if (this.props.alumnoId) {
       this.props.searchIncidencias(this.props.alumnoId);
-    } else if (!this.props.incidencias || this.props.incidencias.length === 0) {
+    } else {
       this.props.retrieveIncidencias();
     }
   }
