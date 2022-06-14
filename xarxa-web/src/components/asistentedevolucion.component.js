@@ -75,6 +75,7 @@ const opts4ESO = [
   "Física y Química",
   "Biología y Geología",
   "Cultura científica",
+  "Matemáticas aplic.",
 ];
 const opts1FPB = [];
 const opts2FPB = [];
