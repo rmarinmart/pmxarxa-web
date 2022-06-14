@@ -32,7 +32,6 @@ const asignaturas4ESO = [
   "Castellano",
   "Valenciano",
   "Inglés",
-  "Biología y Geología",
   "Geografía e Historia",
 ];
 const asignaturas1FPB = [
@@ -74,6 +73,8 @@ const opts4ESO = [
   "Tecnología",
   "Inglés oral",
   "Física y Química",
+  "Biología y Geología",
+  "Cultura científica",
 ];
 const opts1FPB = [];
 const opts2FPB = [];
