@@ -72,7 +72,8 @@ const opts4ESO = [
   "Cultura clàsica",
   "Música",
   "Tecnología",
-  "Inglés oral"
+  "Inglés oral",
+  "Física y Química",
 ];
 const opts1FPB = [];
 const opts2FPB = [];
