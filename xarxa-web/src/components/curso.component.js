@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { searchIncidencias } from "../actions/incidencias";
 import AsistenteDevolucion from "./asistentedevolucion.component";
+import AsistenteEntrega from "./asistenteentrega.component";
 import IncidenciaModalComponent from "./incidenciaModal.component";
 import Incidencias from "./incidencias.component";
 
@@ -80,9 +81,14 @@ class Curso extends React.Component {
     }
   }
 
-  onAddComment = (newComment) => {
+  onAddDevComment = (newComment) => {
     if (this.props.devObs.length > 0) newComment = "\n" + newComment;
     this.props.onDevObsChanged(this.props.devObs + newComment);
+  };
+
+  onAddPresComment = (newComment) => {
+    if (this.props.presObs.length > 0) newComment = "\n" + newComment;
+    this.props.onPresObsChanged(this.props.presObs + newComment);
   };
 
   render() {
@@ -115,6 +121,12 @@ class Curso extends React.Component {
           ></textarea>
         </div>
         <div className="mb-3">
+          <AsistenteEntrega
+            onAddComment={this.onAddPresComment}
+            curso={cursoIndex}
+          />
+        </div>
+        <div className="mb-3">
           <input
             className="form-check-input"
             type="checkbox"
@@ -140,18 +152,22 @@ class Curso extends React.Component {
             ref={this.devTextArea}
           ></textarea>
         </div>
-        <Incidencias removeHeader={true} alumnoId={alumno.id} />
-        <p />
-        <IncidenciaModalComponent
-          alumno={alumno}
-          cursoIndex={cursoIndex}
-          onIncidenciaCreada={onDevChanged}
-        />
-        <p />
-        <AsistenteDevolucion
-          onAddComment={this.onAddComment}
-          curso={cursoIndex}
-        />
+        <div className="mb-3">
+          <Incidencias removeHeader={true} alumnoId={alumno.id} />
+        </div>
+        <div className="mb-3">
+          <IncidenciaModalComponent
+            alumno={alumno}
+            cursoIndex={cursoIndex}
+            onIncidenciaCreada={onDevChanged}
+          />
+        </div>
+        <div className="mb-3">
+          <AsistenteDevolucion
+            onAddComment={this.onAddDevComment}
+            curso={cursoIndex}
+          />
+        </div>
       </div>
     );
   }
