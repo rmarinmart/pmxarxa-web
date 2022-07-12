@@ -22,7 +22,6 @@ const asignaturas3ESO = [
   "Castellano",
   "Inglés",
   "Biología y Geología",
-  "Música",
   "Geography",
   "Física y Química",
 ];
@@ -112,39 +111,52 @@ const problemasTipicos = [
 class AsistenteEntrega extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { pmar: false };
+    const curso = this.props.curso;
+    this.state = {
+      pmar: false,
+      curso: curso,
+      asignaturaSeleccionada: 0,
+      problemaSeleccionado: 0,
+    };
     this.closeButton = React.createRef();
-    this.problemasConfig = problemasTipicos.map((problema) => [
-      problema,
-      "list-group-item-danger",
-    ]);
+    this.problemasConfig = [];
     this.problemasConfig.push(["En buen estado", "list-group-item-success"]);
+    this.problemasConfig.push(
+      ...problemasTipicos.map((problema) => [
+        problema,
+        "list-group-item-danger",
+      ])
+    );
   }
 
   prepararConfiguracion = () => {
-    const curso = this.state.pmar ? this.props.curso + 6 : this.props.curso;
-    this.asignaturaSeleccionada = asignaturas[curso][0];
-    this.problemaSeleccionado = problemasTipicos[0];
-    this.asignaturasConfig = asignaturas[curso].map((asignatura) => [
+    this.asignaturasConfig = asignaturas[this.state.curso].map((asignatura) => [
       asignatura,
       "list-group-item-primary",
     ]);
     this.asignaturasConfig.push(
-      ...optativas[curso].map((opt) => [opt, "list-group-item-info"])
+      ...optativas[this.state.curso].map((opt) => [opt, "list-group-item-info"])
     );
   };
 
   onPMARSwitch = () => {
-    this.setState({ pmar: !this.state.pmar });
+    const curso = this.state.pmar ? this.props.curso + 6 : this.props.curso;
+    this.setState({ pmar: !this.state.pmar, curso: curso });
   };
 
-  onSelectAsignatura = (asignatura) =>
-    (this.asignaturaSeleccionada = asignatura);
-  onSelectProblema = (problema) => (this.problemaSeleccionado = problema);
+  onSelectAsignatura = (index) => {
+    this.setState({ asignaturaSeleccionada: index });
+  };
+
+  onSelectProblema = (index) => {
+    this.setState({ problemaSeleccionado: index });
+  };
 
   onAddComment = () => {
     this.props.onAddComment(
-      `- ${this.asignaturaSeleccionada} ${this.problemaSeleccionado}`
+      `- ${this.asignaturasConfig[this.state.asignaturaSeleccionada][0]} ${
+        this.problemasConfig[this.state.problemaSeleccionado][0]
+      }`
     );
   };
 
@@ -201,6 +213,7 @@ class AsistenteEntrega extends React.Component {
                     <ListGroup
                       items={this.asignaturasConfig}
                       onSelectItem={this.onSelectAsignatura}
+                      selectedItem={this.state.asignaturaSeleccionada}
                     />
                   </div>
                   <div className="col">
@@ -208,6 +221,7 @@ class AsistenteEntrega extends React.Component {
                       <ListGroup
                         items={this.problemasConfig}
                         onSelectItem={this.onSelectProblema}
+                        selectedItem={this.state.problemaSeleccionado}
                       />
                     </ul>
                   </div>
