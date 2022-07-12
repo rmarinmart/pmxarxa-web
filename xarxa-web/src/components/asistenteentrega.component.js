@@ -66,7 +66,7 @@ const asignaturas4PMAR = [
 const opts1ESO = [];
 const opts2ESO = [];
 const opts3ESO = [];
-const opts4ESO = [];
+const opts4ESO = ["Matemáticas aplicadas"];
 const opts1FPB = [];
 const opts2FPB = [];
 const opts2PMAR = [];
@@ -134,7 +134,7 @@ class AsistenteEntrega extends React.Component {
     );
   };
 
-  onPMARSwitch = (pmarActivado) => {
+  onPMARSwitch = () => {
     this.setState({ pmar: !this.state.pmar });
   };
 
