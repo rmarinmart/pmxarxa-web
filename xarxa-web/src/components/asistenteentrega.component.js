@@ -140,7 +140,7 @@ class AsistenteEntrega extends React.Component {
   };
 
   onPMARSwitch = () => {
-    const curso = this.state.pmar ? this.props.curso + 6 : this.props.curso;
+    const curso = this.state.pmar ? this.props.curso : this.props.curso + 6;
     this.setState({ pmar: !this.state.pmar, curso: curso });
   };
 
