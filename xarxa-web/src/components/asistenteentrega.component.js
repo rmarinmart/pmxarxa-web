@@ -120,7 +120,12 @@ class AsistenteEntrega extends React.Component {
     };
     this.closeButton = React.createRef();
     this.problemasConfig = [];
+    this.problemasConfig.push(["Nuevo", "list-group-item-success"]);
     this.problemasConfig.push(["En buen estado", "list-group-item-success"]);
+    this.problemasConfig.push([
+      "Sin-existencias (PENDIENTE DE ENTREGA)",
+      "list-group-item-warning",
+    ]);
     this.problemasConfig.push(
       ...problemasTipicos.map((problema) => [
         problema,
@@ -158,6 +163,14 @@ class AsistenteEntrega extends React.Component {
         this.problemasConfig[this.state.problemaSeleccionado][0]
       }`
     );
+  };
+
+  onNewSet = () => {
+    let msg = "Lote completamente nuevo:";
+    this.asignaturasConfig.forEach((asignatura) => {
+      msg += "\n\t-" + asignatura[0];
+    });
+    this.props.onAddComment(msg);
   };
 
   render() {
@@ -228,6 +241,13 @@ class AsistenteEntrega extends React.Component {
                 </div>
               </div>
               <div className="modal-footer">
+                <button
+                  type="button"
+                  className="btn btn-success"
+                  onClick={this.onNewSet}
+                >
+                  Lote nuevo
+                </button>
                 <button
                   type="button"
                   className="btn btn-primary"
