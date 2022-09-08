@@ -32,33 +32,26 @@ const asignaturas4ESO = [
   "Geografía e Historia",
 ];
 const asignaturas1FPB = [
-  "Taller de llengua",
   "Ciencias aplicadas I",
-  "Comunicación y sociedad I",
 ];
 const asignaturas2FPB = [
-  "Taller de llengua",
   "Ciencias aplicadas II",
-  "Comunicación y sociedad II",
 ];
 const asignaturas2PMAR = [
   "Ámbito sociolingüístico",
   "Ámbito científico",
   "All clear 1 inglés",
   "Música",
-  "Tecnología",
 ];
 const asignaturas3PMAR = [
   "Valenciano",
   "Castellano",
   "Geografía",
   "All clear 2",
-  "Música",
 ];
 const asignaturas4PMAR = [
   "Ciencias sociales",
   "Castellano",
-  "Matemáticas",
   "Ambito tecnológico",
   "All clear 3",
 ];
@@ -70,7 +63,7 @@ const opts1FPB = [];
 const opts2FPB = [];
 const opts2PMAR = [];
 const opts3PMAR = [];
-const opts4PMAR = [];
+const opts4PMAR = ["Matemáticas aplicadas"];
 
 const asignaturas = [
   asignaturas1ESO,
