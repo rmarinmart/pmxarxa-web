@@ -7,7 +7,17 @@ import Curso from "./curso.component";
 import Toast from "./toast.component";
 import { Toast as BootstrapToast } from "../../node_modules/bootstrap/dist/js/bootstrap.esm";
 import CabeceraAlumno from "./cabeceraAlumno.component";
-import { ESO1, ESO2, ESO3, ESO4, FPB1, FPB2, tabConfig } from "../config";
+import {
+  BACH1,
+  BACH2,
+  ESO1,
+  ESO2,
+  ESO3,
+  ESO4,
+  FPB1,
+  FPB2,
+  tabConfig,
+} from "../config";
 
 class Alumno extends Component {
   constructor(props) {
@@ -424,6 +434,116 @@ class Alumno extends Component {
     );
   }
 
+  render1Bach(alumno, index) {
+    if (index !== BACH1) return "";
+
+    const onPresChanged = (checked) => {
+      this.setAndUpdate({
+        ...alumno,
+        batchpres1: checked,
+      });
+    };
+
+    const onDevChanged = (checked) => {
+      this.setAndUpdate({
+        ...alumno,
+        batchdev1: checked,
+      });
+    };
+
+    const onPresObsChanged = (text) => {
+      this.setAndUpdate(
+        {
+          ...alumno,
+          batchpresobs1: text,
+          batchpres1: text.length > 0 ? true : alumno.batchpres1,
+        },
+        true
+      );
+    };
+
+    const onDevObsChanged = (text) => {
+      this.setAndUpdate(
+        {
+          ...alumno,
+          batchdevobs1: text,
+          batchdev1: text.length > 0 ? true : alumno.batchdev1,
+        },
+        true
+      );
+    };
+
+    return (
+      <Curso
+        alumno={alumno}
+        checkedPres={alumno.batchpres1}
+        checkedDev={alumno.batchdev1}
+        presObs={alumno.batchpresobs1}
+        devObs={alumno.batchdevobs1}
+        onPresChanged={onPresChanged}
+        onDevChanged={onDevChanged}
+        onPresObsChanged={onPresObsChanged}
+        onDevObsChanged={onDevObsChanged}
+        cursoIndex={index}
+      />
+    );
+  }
+
+  render2Bach(alumno, index) {
+    if (index !== BACH2) return "";
+
+    const onPresChanged = (checked) => {
+      this.setAndUpdate({
+        ...alumno,
+        batchpres2: checked,
+      });
+    };
+
+    const onDevChanged = (checked) => {
+      this.setAndUpdate({
+        ...alumno,
+        batchdev2: checked,
+      });
+    };
+
+    const onPresObsChanged = (text) => {
+      this.setAndUpdate(
+        {
+          ...alumno,
+          batchpresobs2: text,
+          batchpres2: text.length > 0 ? true : alumno.batchpres2,
+        },
+        true
+      );
+    };
+
+    const onDevObsChanged = (text) => {
+      this.setAndUpdate(
+        {
+          ...alumno,
+          batchdevobs2: text,
+          batchdev2: text.length > 0 ? true : alumno.batchdev2,
+        },
+        true
+      );
+    };
+
+    return (
+      <Curso
+        alumno={alumno}
+        checkedPres={alumno.batchpres2}
+        checkedDev={alumno.batchdev2}
+        presObs={alumno.batchpresobs2}
+        devObs={alumno.batchdevobs2}
+        onPresChanged={onPresChanged}
+        onDevChanged={onDevChanged}
+        onPresObsChanged={onPresObsChanged}
+        onDevObsChanged={onDevObsChanged}
+        cursoIndex={index}
+      />
+    );
+  }
+
   onSetTab = (selectedTab) => {
     this.setState({ cursoIndex: selectedTab });
   };
@@ -482,6 +602,8 @@ class Alumno extends Component {
         {this.render4ESO(currentAlumno, cursoIndex)}
         {this.render1FPB(currentAlumno, cursoIndex)}
         {this.render2FPB(currentAlumno, cursoIndex)}
+        {this.render1Bach(currentAlumno, cursoIndex)}
+        {this.render2Bach(currentAlumno, cursoIndex)}
         <Toast ref={this.alumnoToast} message={message} />
       </div>
     );
