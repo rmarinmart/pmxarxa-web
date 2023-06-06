@@ -82,13 +82,20 @@ class Curso extends React.Component {
   }
 
   onAddDevComment = (newComment) => {
-    if (this.props.devObs.length > 0) newComment = "\n" + newComment;
-    this.props.onDevObsChanged(this.props.devObs + newComment);
+    if (this.props.devObs && this.props.devObs.length > 0)
+      newComment = "\n" + newComment;
+    let newObs = this.props.devObs ? this.props.devObs : "";
+    newObs = newObs.concat(newComment);
+    this.props.onDevObsChanged(newObs);
   };
 
   onAddPresComment = (newComment) => {
-    if (this.props.presObs.length > 0) newComment = "\n" + newComment;
-    this.props.onPresObsChanged(this.props.presObs + newComment);
+    if (this.props.presObs && this.props.presObs.length > 0) {
+      newComment = "\n" + newComment;
+    }
+    let newObs = this.props.presObs ? this.props.presObs : "";
+    newObs = newObs.concat(newComment);
+    this.props.onPresObsChanged(newObs);
   };
 
   render() {
