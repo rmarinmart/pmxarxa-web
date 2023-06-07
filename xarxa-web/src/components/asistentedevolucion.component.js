@@ -95,6 +95,32 @@ const opts2PMAR = ["Valores", "Religión", "Francés"];
 const opts3PMAR = ["Valores", "Religión"];
 const opts4PMAR = ["Música", "Cultura científica", "Francés"];
 
+const asignaturas1BACH = ["Castellano", "Inglés", "Filosofía"];
+const asignaturas2BACH = ["Inglés"];
+const opts1BACH = [
+  "Dibujo Técnico",
+  "Lenguaje y práctica musical",
+  "Historia del mundo",
+  "Griego",
+  "Matemáticas CCSS",
+  "Biología y geología",
+];
+const opts2BACH = [
+  "Francés",
+  "Historia de la filosofía",
+  "Historia de España",
+  "Matemáticas de ciencias (OPT)",
+  "Matemáticas de CCSS (OPT)",
+  "BIOLOGÍA",
+  "GEOLOGÍA",
+  "FÍSICA",
+  "PSICOLOGÍA",
+  "GEOGRAFÍA DE ESPAÑA",
+  "Dibujo técnico II",
+  "Griego II",
+  "Latin II",
+];
+
 const asignaturas = [
   asignaturas1ESO,
   asignaturas2ESO,
@@ -102,12 +128,16 @@ const asignaturas = [
   asignaturas4ESO,
   asignaturas1FPB,
   asignaturas2FPB,
+  asignaturas1BACH,
+  asignaturas2BACH,
   asignaturas1ESO,
   asignaturas2PMAR,
   asignaturas3PMAR,
   asignaturas4PMAR,
   asignaturas1FPB,
   asignaturas2FPB,
+  asignaturas1BACH,
+  asignaturas2BACH,
 ];
 const optativas = [
   opts1ESO,
@@ -116,12 +146,16 @@ const optativas = [
   opts4ESO,
   opts1FPB,
   opts2FPB,
+  opts1BACH,
+  opts2BACH,
   opts1ESO,
   opts2PMAR,
   opts3PMAR,
   opts4PMAR,
   opts1FPB,
   opts2FPB,
+  opts1BACH,
+  opts2BACH,
 ];
 const problemasTipicos = [
   "Bordes estropeados",
@@ -163,7 +197,7 @@ class AsistenteDevolucion extends React.Component {
   };
 
   onPMARSwitch = () => {
-    const curso = this.state.pmar ? this.props.curso : this.props.curso + 6;
+    const curso = this.state.pmar ? this.props.curso : this.props.curso + 8;
     this.setState({ pmar: !this.state.pmar, curso: curso });
   };
 
