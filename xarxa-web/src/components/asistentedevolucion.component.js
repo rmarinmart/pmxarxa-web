@@ -6,7 +6,6 @@ const asignaturas1ESO = [
   "Castellano",
   "Inglés",
   "Biología y Geología",
-  "Tecnología",
   "Música",
   "Geografía e Historia",
 ];
@@ -15,7 +14,6 @@ const asignaturas2ESO = [
   "Castellano",
   "Inglés",
   "Física y Química",
-  "Tecnología",
   "Música",
   "Geografía e Historia",
 ];
@@ -24,7 +22,6 @@ const asignaturas3ESO = [
   "Castellano",
   "Inglés",
   "Biología y Geología",
-  "Música",
   "Geography",
   "Física y Química",
 ];
@@ -49,51 +46,53 @@ const asignaturas2PMAR = [
   "Ámbito científico",
   "All clear 1 inglés",
   "Música",
-  "Tecnología",
 ];
 const asignaturas3PMAR = [
   "Valenciano",
   "Castellano",
   "Geografía",
   "All clear 2",
-  "Música",
 ];
+
 const asignaturas4PMAR = [
   "Ciencias sociales",
   "Castellano",
-  "Matemáticas",
   "Ambito tecnológico",
   "All clear 3",
 ];
-const opts1ESO = ["Francés", "Religión", "Valores"];
+const opts1ESO = ["Francés", "Religión"];
 const opts2ESO = ["Francés", "Religión", "Valores"];
-const opts3ESO = [
-  "Francés",
-  "Religión",
-  "Valores",
-  "Cultura clásica",
-  "Inglés oral",
-];
+const opts3ESO = ["Francés", "Religión", "Creatividad musical"];
 const opts4ESO = [
+  "Cultura científica",
+  "Ciencias aplicadas a la actividad prof. (CAAP)",
+  "Biología y Geología",
+  "Economía",
   "Francés",
   "Religión",
   "Valores",
-  "Economía",
+  "Física y Química",
+  "Inglés oral",
+  "Música",
   "Latín",
   "Cultura clàsica",
-  "Música",
-  "Tecnología",
-  "Inglés oral",
-  "Física y Química",
-  "Biología y Geología",
-  "Cultura científica",
   "Matemáticas aplic.",
 ];
 const opts1FPB = [];
 const opts2FPB = [];
 const opts2PMAR = ["Valores", "Religión", "Francés"];
-const opts3PMAR = ["Valores", "Religión"];
-const opts4PMAR = ["Música", "Cultura científica", "Francés"];
+const opts3PMAR = ["Francés", "Religión", "Creatividad musical"];
+const opts4PMAR = [
+  "Cultura científica",
+  "Ciencias aplicadas a la actividad prof. (CAAP)",
+  "Economía",
+  "Francés",
+  "Religión",
+  "Valores",
+  "Inglés oral",
+  "Música",
+  "Cultura clàsica",
+];
 
 const asignaturas1BACH = ["Castellano", "Inglés", "Filosofía"];
 const asignaturas2BACH = ["Inglés"];
