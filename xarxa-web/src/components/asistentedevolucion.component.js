@@ -103,7 +103,6 @@ const asignaturas1BACH = [
 const asignaturas2BACH = ["Inglés"];
 const opts1BACH = [
   "Dibujo Técnico",
-  "Lenguaje y práctica musical",
   "Historia del mundo",
   "Griego",
   "Matemáticas CCSS",
