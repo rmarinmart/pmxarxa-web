@@ -94,7 +94,12 @@ const opts4PMAR = [
   "Cultura clàsica",
 ];
 
-const asignaturas1BACH = ["Castellano", "Inglés", "Filosofía"];
+const asignaturas1BACH = [
+  "Castellano",
+  "Inglés",
+  "Filosofía",
+  "Llengua i literatura",
+];
 const asignaturas2BACH = ["Inglés"];
 const opts1BACH = [
   "Dibujo Técnico",
