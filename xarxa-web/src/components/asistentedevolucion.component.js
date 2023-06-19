@@ -62,7 +62,12 @@ const asignaturas4PMAR = [
 ];
 const opts1ESO = ["Francés", "Religión"];
 const opts2ESO = ["Francés", "Religión", "Valores"];
-const opts3ESO = ["Francés", "Religión", "Creatividad musical"];
+const opts3ESO = [
+  "Francés",
+  "Religión",
+  "Creatividad musical",
+  "Cultura clàsica",
+];
 const opts4ESO = [
   "Cultura científica",
   "Ciencias aplicadas a la actividad prof. (CAAP)",
