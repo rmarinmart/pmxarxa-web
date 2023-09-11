@@ -63,7 +63,7 @@ const opts2PMAR = [];
 const opts3PMAR = [];
 const opts4PMAR = ["Matemáticas aplicadas"];
 
-const asignaturas1BACH = ["Castellano", "Inglés", "Filosofía", "Valencià"];
+const asignaturas1BACH = ["Castellano", "Filosofía", "Valencià"];
 const asignaturas2BACH = ["Inglés", "Historia de España"];
 const opts1BACH = [
   "Dibujo Técnico I",
