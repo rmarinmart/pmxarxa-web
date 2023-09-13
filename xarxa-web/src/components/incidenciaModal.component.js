@@ -28,7 +28,7 @@ class IncidenciaModal extends React.Component {
       )
       .then(() => {
         this.setState({ descripcion: "" });
-        this.props.onIncidenciaCreada(true);
+        //this.props.onIncidenciaCreada(true);
         this.closeButton.current.click();
       })
       .catch((e) => {
