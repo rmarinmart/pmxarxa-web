@@ -56,7 +56,7 @@ class Alumno extends Component {
     if (alumno.esopres2 && alumno.esodev2) return ESO3;
     if (alumno.esopres1 && alumno.esodev1) return ESO2;
     if (alumno.batchpres1 && !alumno.batchdev1) return BACH1;
-    if (alumno.batchpres1 && alumno.batchdev1) return BACH2;
+    if (alumno.batchdev1) return BACH2;
 
     return ESO1;
   }
