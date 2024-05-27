@@ -185,8 +185,7 @@ class AsistenteEntrega extends React.Component {
 
   onAddComment = () => {
     this.props.onAddComment(
-      `- ${this.asignaturasConfig[this.state.asignaturaSeleccionada][0]} ${
-        this.problemasConfig[this.state.problemaSeleccionado][0]
+      `- ${this.asignaturasConfig[this.state.asignaturaSeleccionada][0]} ${this.problemasConfig[this.state.problemaSeleccionado][0]
       }`
     );
   };
@@ -221,7 +220,7 @@ class AsistenteEntrega extends React.Component {
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title" id="asistenteEntLabel">
-                  Asistente de devolución
+                  Asistente de entrega
                 </h5>
                 <button
                   type="button"
