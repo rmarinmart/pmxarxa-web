@@ -51,12 +51,12 @@ class Alumno extends Component {
     if (alumno.fpbpres1 && !alumno.fpbdev1) return FPB1;
     if (alumno.fpbpres2) return FPB2;
     if (alumno.fpbpres1 && alumno.fpbdev1) return FPB2;
+    if (alumno.batchpres2) return BACH2;
     if (alumno.esopres4 && alumno.esodev4) return BACH1;
+    if (alumno.batchpres1 && !alumno.batchdev1) return BACH1;
     if (alumno.esopres3 && alumno.esodev3) return ESO4;
     if (alumno.esopres2 && alumno.esodev2) return ESO3;
     if (alumno.esopres1 && alumno.esodev1) return ESO2;
-    if (alumno.batchpres1 && !alumno.batchdev1) return BACH1;
-    if (alumno.batchdev1) return BACH2;
 
     return ESO1;
   }
@@ -64,9 +64,11 @@ class Alumno extends Component {
   getAlumno(id) {
     AlumnoDataService.get(id)
       .then((response) => {
+        let cIndex = this.calcularCursoActual(response.data);
+        console.log(cIndex);
         this.setState({
           currentAlumno: response.data,
-          cursoIndex: this.calcularCursoActual(response.data),
+          cursoIndex: cIndex,
         });
       })
       .catch((e) => {
