@@ -30,6 +30,7 @@ const asignaturas4ESO = [
   "Valenciano",
   "Inglés",
   "Geografía e Historia",
+  "Valores",
 ];
 const asignaturas1FPB = [
   "Taller de llengua",
@@ -59,6 +60,7 @@ const asignaturas4PMAR = [
   "Castellano",
   "Ambito tecnológico",
   "Teamwork 4",
+  "Valores",
 ];
 const opts1ESO = ["Francés", "Religión"];
 const opts2ESO = ["Francés", "Religión"];
@@ -73,7 +75,6 @@ const opts4ESO = [
   "Economía",
   "Francés",
   "Religión",
-  "Valores",
   "Física y Química",
   "Inglés oral",
   "Música",
@@ -84,14 +85,7 @@ const opts1FPB = [];
 const opts2FPB = [];
 const opts2PMAR = ["Religión", "Francés"];
 const opts3PMAR = ["Francés", "Religión", "Creatividad musical"];
-const opts4PMAR = [
-  "Economía",
-  "Francés",
-  "Religión",
-  "Valores",
-  "Inglés oral",
-  "Música",
-];
+const opts4PMAR = ["Economía", "Francés", "Religión", "Inglés oral", "Música"];
 
 const asignaturas1BACH = [
   "Castellano",
