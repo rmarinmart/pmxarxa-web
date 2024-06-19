@@ -53,6 +53,7 @@ const asignaturas3PMAR = [
   "Castellano",
   "Geografía",
   "Teamwork 3",
+  "Ámbito Científico",
 ];
 
 const asignaturas4PMAR = [
