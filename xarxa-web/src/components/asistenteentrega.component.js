@@ -5,7 +5,6 @@ const asignaturas1ESO = [
   "Valenciano",
   "Castellano",
   "Inglés",
-  "Biología y Geología",
   "Música",
   "Geografía e Historia",
 ];
@@ -24,6 +23,7 @@ const asignaturas3ESO = [
   "Biología y Geología",
   "Geography",
   "Física y Química",
+  "Música",
 ];
 const asignaturas4ESO = [
   "Castellano",
@@ -35,8 +35,6 @@ const asignaturas4ESO = [
 const asignaturas1FPB = ["Ciencias aplicadas I"];
 const asignaturas2FPB = ["Ciencias aplicadas II"];
 const asignaturas2PMAR = [
-  "Ámbito sociolingüístico",
-  "Ámbito científico",
   "Teamwork 2 inglés",
   "Música",
 ];
@@ -46,12 +44,14 @@ const asignaturas3PMAR = [
   "Geografía",
   "Ámbito científico",
   "Teamwork 3",
+  "Música",
 ];
 const asignaturas4PMAR = [
   "Ciencias sociales",
   "Castellano",
   "Ambito tecnológico",
   "Teamwork 4",
+  "Valenciano",
 ];
 const opts1ESO = [];
 const opts2ESO = [];
@@ -61,9 +61,9 @@ const opts1FPB = [];
 const opts2FPB = [];
 const opts2PMAR = [];
 const opts3PMAR = [];
-const opts4PMAR = ["Matemáticas aplicadas"];
+const opts4PMAR = [];
 
-const asignaturas1BACH = ["Castellano", "Filosofía", "Valencià"];
+const asignaturas1BACH = ["Castellano", "Filosofía", "Valencià", "Inglés"];
 const asignaturas2BACH = ["Inglés", "Historia de España"];
 const opts1BACH = [
   "Dibujo Técnico I",
