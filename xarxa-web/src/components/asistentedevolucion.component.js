@@ -102,6 +102,7 @@ const opts1BACH = [
   "Matemáticas CCSS",
   "Biología y geología",
   "Tecnología e ingeniería I",
+  "Francés",
 ];
 const opts2BACH = [
   "Francés",
